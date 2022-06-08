@@ -1,0 +1,55 @@
+<br>
+<div class="container">
+<div class="fixed"><h1>Полёты</h1></div>
+<div class="rubbery"><button mat-flat-button color="primary" (click)="addFlight()">Создать новый полёт</button></div>
+</div>
+<br>
+<div *ngIf="isFlightsLoaded && isUserDataLoaded" class="index-page">
+  <mat-card class="post-card" *ngFor="let flight of flights; let i = index">
+    <mat-card>
+      <mat-card-title>рейс номер {{flight.flightNumber}}</mat-card-title>
+      <mat-card-subtitle>
+        <div *ngIf="flight.regular===true; then regular else noRegular">
+        </div>
+        <ng-template #regular>
+          регулярный
+        </ng-template>
+        <ng-template #noRegular>
+          чартерный
+        </ng-template>
+      </mat-card-subtitle>
+      <mat-card-content>
+        Информация о самолёте <br>
+        иата код самолёта: {{flight.iataCode}}<br>
+        загруженность, чел: {{flight.passengersCount}}<br>
+        Информация о рейсе <br>
+        Вылет из аэропорта {{flight.icaoCodeArrival}}, прилёт в аэропорт {{flight.icaoCodeDeparture}}<br>
+        Цена билета {{flight.ticketPrice}}$<br>
+        Дата вылета {{flight.departure | date:'short'}}<br>
+        Время в полёте {{flight.flightTime}}<br>
+        Статус: {{flight.status}}<br>
+      </mat-card-content>
+      <mat-divider inset></mat-divider>
+      <mat-card-actions>
+        <button mat-raised-button color="primary" [routerLink]="['/flights',
+       flight.flightNumber,
+       flight.iataCode,
+       flight.icaoCodeArrival,
+       flight.icaoCodeDeparture]">
+          Всё о полёте
+        </button>
+        <button mat-raised-button color="primary" (click)="checkDelivery(flight)">
+          Кейтеринг
+        </button><br><br>
+        <button mat-raised-button color="primary" >
+          Изменить статус
+        </button>
+      </mat-card-actions>
+      <mat-card-footer>
+        <mat-progress-bar mode="query"></mat-progress-bar>
+      </mat-card-footer>
+    </mat-card>
+  </mat-card>
+</div>
+
+

@@ -1,0 +1,27 @@
+<div>
+  <h2>Добавить полёт</h2>
+  <form [formGroup]="addForm">
+    <mat-form-field class="w-100" appearance="outline">
+      <mat-label>модель</mat-label>
+      <input matInput formControlName="model">
+    </mat-form-field>
+    <mat-form-field class="w-100" appearance="outline">
+      <mat-label>ИАТА код</mat-label>
+      <input matInput formControlName="iataCode">
+    </mat-form-field>
+    <mat-form-field class="w-100" appearance="outline">
+      <mat-label>Число мест</mat-label>
+      <input type="number" matInput formControlName="loadCapacity">
+    </mat-form-field>
+    <div class="row">
+      <button (click)="closeDialog()" class="w-50"
+              mat-button mat-dialog-close disableRipple>
+        Закрыть
+      </button>
+      <button color="primary" class="w-50" [disabled]="addForm.invalid" (click)="submit()" mat-button
+              disableRipple>
+        Добавить
+      </button>
+    </div>
+  </form>
+</div>

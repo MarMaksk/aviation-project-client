@@ -1,0 +1,81 @@
+<div>
+  <h2>Добавить полёт</h2>
+  <form [formGroup]="addForm">
+    <mat-form-field class="w-100" appearance="outline">
+      <mat-label>Тип</mat-label>
+      <mat-select formControlName="regular">
+        <mat-option value="true">
+          Регулярный
+        </mat-option>
+        <mat-option value="false">
+          Чартерный
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="w-100" appearance="outline">
+      <mat-label>Самолёт</mat-label>
+      <mat-select formControlName="iataCode">
+        <mat-option>None</mat-option>
+        <p *ngIf="isDataLoadedAirplane">
+          <mat-option *ngFor="let air of airplane" [value]="air.iataCode">{{air.model}}
+            мест {{air.loadCapacity}} </mat-option>
+        </p>
+      </mat-select>
+      <mat-hint>Выбор из доступных самолётов</mat-hint>
+    </mat-form-field>
+    <mat-form-field class="w-100" appearance="outline">
+      <mat-label>Дата и время вылета</mat-label>
+      <input class="w-100" appearance="outline" matInput formControlName="departure" [ngxMatDatetimePicker]="picker"
+             [min]="date" [disabled]="false" readonly>
+      <mat-datepicker-toggle matSuffix [for]="$any(picker)"></mat-datepicker-toggle>
+      <ngx-mat-datetime-picker #picker [showSpinners]="true" [showSeconds]="false"
+                               [enableMeridian]="false">
+      </ngx-mat-datetime-picker>
+    </mat-form-field>
+    <mat-form-field class="w-100" appearance="outline">
+      <mat-label>Время полёта</mat-label>
+      <input type="time" matInput formControlName="flightTime">
+    </mat-form-field>
+    <mat-form-field class="w-100" appearance="outline">
+      <mat-label>Количество пасажиров</mat-label>
+      <input matInput formControlName="passengersCount">
+    </mat-form-field>
+    <mat-form-field appearance="fill" floatLabel="always">
+      <mat-label>Цена билета</mat-label>
+      <input matInput type="number" class="example-right-align" formControlName="ticketPrice" placeholder="0">
+      <span matPrefix>$&nbsp;</span>
+      <span matSuffix>.00</span>
+    </mat-form-field>
+    <mat-form-field class="w-100" appearance="outline">
+      <mat-label>Аэропорт вылета</mat-label>
+      <mat-select formControlName="icaoCodeDeparture">
+        <mat-option>None</mat-option>
+        <p *ngIf="isDataLoadedAirplane">
+          <mat-option *ngFor="let air of airport" [value]="air.icaoCode">{{air.country}}, {{air.city}} </mat-option>
+        </p>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="w-100" appearance="outline">
+      <mat-label>Аэропорт прибытия</mat-label>
+      <mat-select formControlName="icaoCodeArrival">
+        <mat-option>None</mat-option>
+        <p *ngIf="isDataLoadedAirplane">
+          <mat-option *ngFor="let air of airport" [value]="air.icaoCode">{{air.country}}, {{air.city}} </mat-option>
+        </p>
+      </mat-select>
+    </mat-form-field>
+
+
+
+    <div class="row">
+      <button (click)="closeDialog()" class="w-50"
+              mat-button mat-dialog-close disableRipple>
+        Закрыть
+      </button>
+      <button color="primary" class="w-50" [disabled]="addForm.invalid" (click)="submit()" mat-button
+              disableRipple>
+        Добавить
+      </button>
+    </div>
+  </form>
+</div>

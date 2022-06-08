@@ -1,0 +1,50 @@
+.index-page {
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: stretch;
+  margin: 0 auto;
+  width: 60%;
+  padding-top: 3rem;
+}
+
+.post-card {
+
+  display: flex;
+  margin: 2rem auto;
+  width: 100%;
+  background: white;
+}
+.example-card {
+
+}
+.example-container {
+  width: 500px;
+  height: 300px;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.example-sidenav-content {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.example-sidenav {
+  padding: 20px;
+}
+.fixed {
+  flex: 0 0 200px;
+}
+.rubbery {
+  flex: 1 1 25%;
+}
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: stretch;
+  height: 40px;
+}

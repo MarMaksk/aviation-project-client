@@ -1,0 +1,49 @@
+<br>
+<div class="container">
+  <div class="fixed"><h1>Аэропорты</h1></div>
+  <div class="rubbery"><button mat-flat-button color="primary" (click)="addAirport()">Добавить аэропорт</button></div>
+</div>
+<br>
+<div *ngIf="isDataLoadedAirports">
+  <mat-form-field>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Фильтр">
+  </mat-form-field>
+
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" matSort>
+
+      <ng-container matColumnDef="icaoCode">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> ИКАО код</th>
+        <td mat-cell *matCellDef="let row"> {{row.icaoCode}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="country">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Страна</th>
+        <td mat-cell *matCellDef="let row"> {{row.country}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="city">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Город</th>
+        <td mat-cell *matCellDef="let row"> {{row.city}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+      </tr>
+    </table>
+
+      <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+  </div>
+</div>
+
+<!--<div class="container">-->
+<!--  <div class="row">-->
+<!--    <div *ngFor="let air of airports | paginate: {-->
+<!--        itemsPerPage: 2, currentPage: page, totalItems:totalLength-->
+<!--    }">-->
+<!--      <p>{{air.country}} {{air.city}}</p>-->
+<!--    </div>-->
+<!--  </div>-->
+
+<!--  <pagination-controls (pageChange)="page = $event"></pagination-controls>-->
+<!--</div>-->

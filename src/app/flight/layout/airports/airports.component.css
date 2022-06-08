@@ -1,0 +1,16 @@
+table {
+  width: 100%;
+}
+.fixed {
+  flex: 0 0 200px;
+}
+.rubbery {
+  flex: 1 1 25%;
+}
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: stretch;
+  height: 40px;
+}

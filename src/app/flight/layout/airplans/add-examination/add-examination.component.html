@@ -1,0 +1,19 @@
+<div>
+  <h2>Добавить проверку</h2>
+  <form [formGroup]="addForm">
+    <mat-form-field class="w-100" appearance="outline">
+      <mat-label>Описание</mat-label>
+      <textarea matInput formControlName="description"></textarea>
+    </mat-form-field>
+    <div class="row">
+      <button (click)="closeDialog()" class="w-50"
+              mat-button mat-dialog-close disableRipple>
+        Закрыть
+      </button>
+      <button color="primary" class="w-50" [disabled]="addForm.invalid" (click)="submit()" mat-button
+              disableRipple>
+        Добавить
+      </button>
+    </div>
+  </form>
+</div>
