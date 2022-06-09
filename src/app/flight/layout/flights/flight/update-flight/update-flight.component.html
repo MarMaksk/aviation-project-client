@@ -2,17 +2,6 @@
   <h2>Редактирование полёта</h2>
   <form [formGroup]="updateForm">
     <mat-form-field class="w-100" appearance="outline">
-      <mat-label>Тип</mat-label>
-      <mat-select formControlName="regular">
-        <mat-option value="true">
-          Регулярный
-        </mat-option>
-        <mat-option value="false">
-          Чартерный
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-    <mat-form-field class="w-100" appearance="outline">
       <mat-label>Самолёт</mat-label>
       <mat-select formControlName="iataCode">
         <p *ngIf="isDataLoadedAirplane">

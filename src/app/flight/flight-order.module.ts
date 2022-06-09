@@ -13,7 +13,7 @@ import {CheckDeliveryComponent} from "./layout/flights/check-delivery/check-deli
 import {ExaminationsComponent} from "./layout/examinations/examinations.component";
 import {NavigationComponent} from "./layout/navigation/navigation.component";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {MaterialModule} from "./material/material.module";
+import {MaterialModule} from "../material.module";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {BrowserModule} from "@angular/platform-browser";
 import {AppRoutingModule} from "../app-routing.module";

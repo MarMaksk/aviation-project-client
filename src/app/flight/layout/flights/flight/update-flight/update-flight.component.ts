@@ -24,7 +24,6 @@ export class UpdateFlightComponent implements OnInit {
   isDataLoadedAirplane = false;
   isDataLoadedAirport = false;
   isStatusesLoaded = false;
-  lastRegular = this.data.flight.regular
   lastAirplane: Airplane | any
   airLoad = false;
 
@@ -70,10 +69,7 @@ export class UpdateFlightComponent implements OnInit {
   }
 
   createUpdateForm(): FormGroup {
-    let regular = this.data.flight.regular
-    console.log(this.data.flight.regular)
     return this.fb.group({
-        regular: [regular, Validators.compose([Validators.required])],
         iataCode: [this.data.airplane, Validators.compose([Validators.required])],
         departure: [this.data.flight.departure, Validators.compose([Validators.required])],
         flightTime: [this.data.flight.flightTime, Validators.compose([Validators.required])],
@@ -89,7 +85,6 @@ export class UpdateFlightComponent implements OnInit {
   submit(): void {
     console.log(this.updateForm.value)
     this.flightService.update({
-      regular: this.updateForm.value.regular,
       iataCode: this.updateForm.value.iataCode,
       flightNumber: this.data.flight.flightNumber,
       departure: this.updateForm.value.departure,

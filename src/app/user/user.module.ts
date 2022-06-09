@@ -6,7 +6,7 @@ import {ProfileComponent} from "./user/profile/profile.component";
 import {LoginComponent} from "./auth/login/login.component";
 import {authInterceptorProviders} from "./helper/auth-interceptor.service";
 import {authErrorInterceptorProviders} from "./helper/error-interceptor.service";
-import {MaterialModule} from "../flight/material/material.module";
+import {MaterialModule} from "../material.module";
 import {RouterModule} from "@angular/router";
 import {EditUserComponent} from "./user/edit-user/edit-user.component";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";

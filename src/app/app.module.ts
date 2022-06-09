@@ -7,6 +7,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {RouterModule} from "@angular/router";
 import {CateringModule} from "./catering/catering.module";
 import {UserModule} from "./user/user.module";
+import {MaterialModule} from "./material.module";
 
 @NgModule({
   declarations: [
@@ -14,7 +15,7 @@ import {UserModule} from "./user/user.module";
   ],
   imports: [
     BrowserModule, FlightOrderModule, BrowserAnimationsModule,
-    RouterModule, CateringModule, UserModule
+    RouterModule, CateringModule, UserModule, MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]
