@@ -1,6 +1,6 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { UserComponent } from './user.component';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {UserComponent} from './user.component';
 import {RegistrationComponent} from "./auth/registration/registration.component";
 import {ProfileComponent} from "./user/profile/profile.component";
 import {LoginComponent} from "./auth/login/login.component";
@@ -10,7 +10,6 @@ import {MaterialModule} from "../flight/material/material.module";
 import {RouterModule} from "@angular/router";
 import {EditUserComponent} from "./user/edit-user/edit-user.component";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-
 
 
 @NgModule({
@@ -38,4 +37,5 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
     EditUserComponent
   ]
 })
-export class UserModule { }
+export class UserModule {
+}

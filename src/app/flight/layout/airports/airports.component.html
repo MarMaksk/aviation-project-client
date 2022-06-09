@@ -3,47 +3,38 @@
   <div class="fixed"><h1>Аэропорты</h1></div>
   <div class="rubbery"><button mat-flat-button color="primary" (click)="addAirport()">Добавить аэропорт</button></div>
 </div>
-<br>
-<div *ngIf="isDataLoadedAirports">
-  <mat-form-field>
-    <input matInput (keyup)="applyFilter($event)" placeholder="Фильтр">
-  </mat-form-field>
+<div>
+  <mat-divider style="margin-top: 20px; margin-bottom: 20px;"></mat-divider>
 
-  <div class="mat-elevation-z8">
-    <table mat-table [dataSource]="dataSource" matSort>
+  <table mat-table [dataSource]="airports" class="mat-elevation-z8"
+         matSort matSortActive="icaoCode, country, city"
+         matSortDisableClear matSortDirection="desc"
+         (matSortChange)="applySort($event)">
+    <ng-container matColumnDef="country">
+      <th mat-header-cell *matHeaderCellDef  mat-sort-header disableClear> country</th>
+      <td mat-cell *matCellDef="let air"> {{air.country}} </td>
+    </ng-container>
 
-      <ng-container matColumnDef="icaoCode">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> ИКАО код</th>
-        <td mat-cell *matCellDef="let row"> {{row.icaoCode}} </td>
-      </ng-container>
+    <ng-container matColumnDef="city">
+      <th mat-header-cell *matHeaderCellDef  mat-sort-header disableClear> city</th>
+      <td mat-cell *matCellDef="let air"> {{air.city}} </td>
+    </ng-container>
 
-      <ng-container matColumnDef="country">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Страна</th>
-        <td mat-cell *matCellDef="let row"> {{row.country}} </td>
-      </ng-container>
+    <ng-container matColumnDef="icaoCode">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear> icaoCode</th>
+      <td mat-cell *matCellDef="let air">{{air.icaoCode}}</td>
+    </ng-container>
 
-      <ng-container matColumnDef="city">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Город</th>
-        <td mat-cell *matCellDef="let row"> {{row.city}} </td>
-      </ng-container>
-
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;">
-      </tr>
-    </table>
-
-      <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
-  </div>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <mat-paginator
+    class="paginator"
+    [length]="totalCount"
+    [pageIndex]="page"
+    [pageSize]="size"
+    [pageSizeOptions]="[1, 4, 5, 6]"
+    (page)="loadAirports($event)"
+  ></mat-paginator>
 </div>
 
-<!--<div class="container">-->
-<!--  <div class="row">-->
-<!--    <div *ngFor="let air of airports | paginate: {-->
-<!--        itemsPerPage: 2, currentPage: page, totalItems:totalLength-->
-<!--    }">-->
-<!--      <p>{{air.country}} {{air.city}}</p>-->
-<!--    </div>-->
-<!--  </div>-->
-
-<!--  <pagination-controls (pageChange)="page = $event"></pagination-controls>-->
-<!--</div>-->

@@ -1,8 +1,9 @@
 import {Injectable} from "@angular/core";
-import {ICRUD} from "./ICRUD";
+import {ICRUD} from "../../flight/service/ICRUD";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Product} from "../models/product";
+import {PageableEntity} from "../../user/models/pageableEntity";
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,10 @@ export class ProductService implements ICRUD<Product> {
   }
 
   API: string = 'http://localhost:8080/avia/catering/product/';
+
+  findAllWithPagination(sort: string, direction: string, order: number, page: number): Observable<PageableEntity> {
+    return this.http.get<PageableEntity>(this.API + `getAll/${sort}/${order}/${page}/${direction}`);
+  }
 
   create(entity: Product): Observable<Product> {
     return this.http.post<Product>(this.API + 'create', entity);

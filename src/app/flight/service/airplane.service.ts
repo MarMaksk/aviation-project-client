@@ -3,6 +3,7 @@ import {ICRUD} from "./ICRUD";
 import {Airplane} from "../models/airplane";
 import {Observable, Observer} from "rxjs";
 import {HttpClient} from "@angular/common/http";
+import {PageableEntity} from "../../user/models/pageableEntity";
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,10 @@ export class AirplaneService implements ICRUD<Airplane> {
   }
 
   API: string = 'http://localhost:9001/airplane/';
+
+  findAllWithPagination(sort: string, direction: string, order: number, page: number): Observable<PageableEntity> {
+    return this.http.get<PageableEntity>(this.API + `getAll/${sort}/${order}/${page}/${direction}`);
+  }
 
   findAll(): Observable<Airplane[]> {
     return this.http.get<Airplane[]>(this.API + 'getAll')

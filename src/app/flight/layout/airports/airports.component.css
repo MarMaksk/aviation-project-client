@@ -14,3 +14,79 @@ table {
   align-items: stretch;
   height: 40px;
 }
+
+/* Structure */
+.employee-container {
+  position: relative;
+  /* min-height: 200px; */
+}
+
+.employee-table-container {
+  position: relative;
+  /* max-height: 400px; */
+  overflow: auto;
+}
+
+table {
+  width: 100%;
+}
+
+.employee-loading-shade {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 56px;
+  right: 0;
+  background: rgba(0, 0, 0, 0.15);
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.employee-rate-limit-reached {
+  color: #980000;
+  max-width: 360px;
+  text-align: center;
+}
+
+/* Column Widths */
+.mat-column-number,
+.mat-column-state {
+  max-width: 64px;
+}
+
+.mat-column-created {
+  max-width: 124px;
+}
+
+td.mat-cell,
+td.mat-footer-cell,
+th.mat-header-cell {
+  padding: 2px 4px;
+  font-size: 12px;
+  border: 1px solid #dee2e6;
+}
+
+.mat-row:nth-child(even) {
+  /*background-color: #f9f9f9;*/
+}
+
+.mat-row:nth-child(odd) {
+  /*background-color: #ffffff;*/
+}
+
+tr.mat-footer-row,
+tr.mat-row {
+  height: 28px;
+}
+
+tr.mat-header-row {
+  height: 28px;
+  font-weight: 500;
+}
+
+th.mat-header-cell {
+  font-weight: 500;
+  color: #000;
+}

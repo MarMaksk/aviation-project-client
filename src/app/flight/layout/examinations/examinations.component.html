@@ -1,32 +1,36 @@
 <h1>Обслуживание</h1>
-<div *ngIf="isDataLoaded">
-  <mat-form-field>
-    <input matInput (keyup)="applyFilter($event)" placeholder="Фильтр">
-  </mat-form-field>
+<div>
+  <mat-divider style="margin-top: 20px; margin-bottom: 20px;"></mat-divider>
 
-  <div class="mat-elevation-z8">
-    <table mat-table [dataSource]="dataSource" matSort>
+  <table mat-table [dataSource]="examinations" class="mat-elevation-z8"
+         matSort matSortActive="date, iataCode"
+         matSortDisableClear matSortDirection="desc"
+         (matSortChange)="applySort($event)">
+    <ng-container matColumnDef="date">
+      <th mat-header-cell *matHeaderCellDef  mat-sort-header disableClear> Дата</th>
+      <td mat-cell *matCellDef="let air"> {{air.date}} </td>
+    </ng-container>
 
-      <ng-container matColumnDef="date">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Дата</th>
-        <td mat-cell *matCellDef="let row"> {{row.date}} </td>
-      </ng-container>
 
-      <ng-container matColumnDef="description">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Описание</th>
-        <td mat-cell *matCellDef="let row"> {{row.description}} </td>
-      </ng-container>
+    <ng-container matColumnDef="iataCode">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear> ИАТА самолёта</th>
+      <td mat-cell *matCellDef="let air">{{air.iataCode}}</td>
+    </ng-container>
 
-      <ng-container matColumnDef="iataCode">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> ИАТА код</th>
-        <td mat-cell *matCellDef="let row"> {{row.iataCode}} </td>
-      </ng-container>
+    <ng-container matColumnDef="description">
+      <th mat-header-cell *matHeaderCellDef> Описание</th>
+      <td mat-cell *matCellDef="let air"> {{air.description}} </td>
+    </ng-container>
 
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;">
-      </tr>
-    </table>
-
-      <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
-  </div>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <mat-paginator
+    class="paginator"
+    [length]="totalCount"
+    [pageIndex]="page"
+    [pageSize]="size"
+    [pageSizeOptions]="[1, 4, 5, 6]"
+    (page)="loadExamination($event)"
+  ></mat-paginator>
 </div>

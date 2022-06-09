@@ -34,6 +34,8 @@ import {
 import {FlightComponent} from "./layout/flights/flight/flight.component";
 import {RouterModule} from "@angular/router";
 import {NgxPaginationModule} from "ngx-pagination";
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import {MatSortModule} from "@angular/material/sort";
 
 
 @NgModule({
@@ -69,7 +71,9 @@ import {NgxPaginationModule} from "ngx-pagination";
     MatAutocompleteModule,
     MatTableModule,
     MatTabsModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatProgressSpinnerModule,
+    MatSortModule
   ],
   exports: [FlightOrderComponent]
 })
