@@ -18,24 +18,8 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {BrowserModule} from "@angular/platform-browser";
 import {AppRoutingModule} from "../app-routing.module";
 import {HttpClientModule} from "@angular/common/http";
-import {MatGridListModule} from "@angular/material/grid-list";
-import {MatProgressBarModule} from "@angular/material/progress-bar";
-import {MatSelectModule} from "@angular/material/select";
-import {MatAutocompleteModule} from "@angular/material/autocomplete";
-import {MatTableModule} from "@angular/material/table";
-import {MatPaginatorModule} from "@angular/material/paginator";
-import {MatTabsModule} from "@angular/material/tabs";
-import {MatDatepickerModule} from "@angular/material/datepicker";
-import {
-  NgxMatDatetimePickerModule,
-  NgxMatNativeDateModule,
-  NgxMatTimepickerModule
-} from "@angular-material-components/datetime-picker";
 import {FlightComponent} from "./layout/flights/flight/flight.component";
-import {RouterModule} from "@angular/router";
-import {NgxPaginationModule} from "ngx-pagination";
-import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
-import {MatSortModule} from "@angular/material/sort";
+import {NgxPermissionsModule} from "ngx-permissions";
 
 
 @NgModule({
@@ -58,7 +42,8 @@ import {MatSortModule} from "@angular/material/sort";
     BrowserAnimationsModule,
     MaterialModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgxPermissionsModule
   ],
   exports: [FlightOrderComponent]
 })

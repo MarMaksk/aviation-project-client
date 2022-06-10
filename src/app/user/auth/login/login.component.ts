@@ -44,6 +44,10 @@ export class LoginComponent implements OnInit {
     }).subscribe(data => {
       console.log(data)
       this.tokeStorage.saveToken(data.token)
+      this.authService.loadRoles()
+        .subscribe(roles => {
+          this.tokeStorage.saveRoles(roles)
+        })
       this.tokeStorage.saveUser(data)
       this.notificationService.showSnackBar("Successfully logged in")
       this.router.navigate(['/flights'])

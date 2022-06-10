@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {User} from "../models/user";
@@ -10,13 +10,18 @@ const AUTH_API = 'http://localhost:9002/avia/auth/'
 })
 export class AuthService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
   public login(user: User): Observable<any> {
     return this.http.post(AUTH_API + 'signin', {
       username: user.username,
       password: user.password
     })
+  }
+
+  public loadRoles(): Observable<string[]> {
+    return this.http.get<string[]>(AUTH_API + 'loadRoles')
   }
 
   public register(user: User): Observable<any> {

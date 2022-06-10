@@ -41,7 +41,8 @@
        flight.icaoCodeDeparture]">
           Всё о полёте
         </button>
-        <button mat-raised-button color="primary" (click)="checkDelivery(flight)">
+
+        <button *ngxPermissionsOnly="['ROLE_ADMIN']" mat-raised-button color="primary" (click)="checkDelivery(flight)">
           Кейтеринг
         </button>
         <br><br>

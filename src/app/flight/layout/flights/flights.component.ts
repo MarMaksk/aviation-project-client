@@ -9,6 +9,8 @@ import {AirplaneService} from "../../service/airplane.service";
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
 import {AddFlightComponent} from "./add-flight/add-flight.component";
 import {CheckDeliveryComponent} from "./check-delivery/check-delivery.component";
+import {NgxPermissionsService} from "ngx-permissions";
+import {TokenStorageService} from "../../../user/service/token-storage.service";
 
 @Component({
   selector: 'app-flights',
@@ -29,11 +31,15 @@ export class FlightsComponent implements OnInit {
     private notificationService: NotificationService,
     private examinationService: ExaminationService,
     private airplaneService: AirplaneService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private permissionsService: NgxPermissionsService,
+    private tokenStorage: TokenStorageService
   ) {
   }
 
   ngOnInit(): void {
+    this.permissionsService.loadPermissions(this.tokenStorage.getRoles());
+    console.log(this.permissionsService.getPermissions())
     this.flightService.findAllFlight()
       .subscribe(data => {
         console.log(data);

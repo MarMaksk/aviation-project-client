@@ -3,6 +3,7 @@ import {User} from "../models/user";
 
 const TOKEN_KEY = 'auth-token';
 const USER_KEY = 'auth-user';
+const USER_ROLES = 'auth-roles';
 
 @Injectable({
   providedIn: 'root'
@@ -26,8 +27,17 @@ export class TokenStorageService {
     window.sessionStorage.setItem(USER_KEY, JSON.stringify(user));
   }
 
+  public saveRoles(roles: string[]): void {
+    window.sessionStorage.removeItem(USER_ROLES);
+    window.sessionStorage.setItem(USER_ROLES, JSON.stringify(roles));
+  }
+
   public getUser(): String {
     return JSON.parse(<string>sessionStorage.getItem(USER_KEY));
+  }
+
+  public getRoles(): string[] {
+    return JSON.parse(<any>sessionStorage.getItem(USER_ROLES));
   }
 
   logOut(): void {

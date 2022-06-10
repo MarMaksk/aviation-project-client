@@ -8,6 +8,7 @@ import {RouterModule} from "@angular/router";
 import {CateringModule} from "./catering/catering.module";
 import {UserModule} from "./user/user.module";
 import {MaterialModule} from "./material.module";
+import {NgxPermissionsModule} from "ngx-permissions";
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import {MaterialModule} from "./material.module";
   ],
   imports: [
     BrowserModule, FlightOrderModule, BrowserAnimationsModule,
-    RouterModule, CateringModule, UserModule, MaterialModule
+    RouterModule, CateringModule, UserModule, MaterialModule,
+    NgxPermissionsModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

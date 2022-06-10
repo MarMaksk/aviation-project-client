@@ -6,10 +6,10 @@ import {User} from "../../../user/models/user";
 
 @Component({
   selector: 'app-navigation',
-  templateUrl: './navigation.component.html',
-  styleUrls: ['./navigation.component.css']
+  templateUrl: './navigation-catering.component.html',
+  styleUrls: ['./navigation-catering.component.css']
 })
-export class NavigationComponent implements OnInit {
+export class NavigationCateringComponent implements OnInit {
 
   isLoggedIn = false;
   isDataLoaded = false;
