@@ -1,7 +1,9 @@
 <br>
 <div class="container">
-<div class="fixed"><h1>Полёты</h1></div>
-<div class="rubbery"><button mat-flat-button color="primary" (click)="addFlight()">Создать новый полёт</button></div>
+  <div class="fixed"><h1>Полёты</h1></div>
+  <div class="rubbery">
+    <button mat-flat-button color="primary" (click)="addFlight()">Создать новый полёт</button>
+  </div>
 </div>
 <br>
 <div *ngIf="isFlightsLoaded && isUserDataLoaded" class="index-page">
@@ -23,7 +25,8 @@
         иата код самолёта: {{flight.iataCode}}<br>
         загруженность, чел: {{flight.passengersCount}}<br>
         Информация о рейсе <br>
-        Вылет из аэропорта {{flight.icaoCodeArrival}}, прилёт в аэропорт {{flight.icaoCodeDeparture}}<br>
+        Вылет из аэропорта {{flight.icaoCodeArrival}}<br>
+        Прилёт в аэропорт {{flight.icaoCodeDeparture}}<br>
         Цена билета {{flight.ticketPrice}}$<br>
         Дата вылета {{flight.departure | date:'short'}}<br>
         Время в полёте {{flight.flightTime}}<br>
@@ -40,8 +43,9 @@
         </button>
         <button mat-raised-button color="primary" (click)="checkDelivery(flight)">
           Кейтеринг
-        </button><br><br>
-        <button mat-raised-button color="primary" >
+        </button>
+        <br><br>
+        <button mat-raised-button color="primary">
           Изменить статус
         </button>
       </mat-card-actions>

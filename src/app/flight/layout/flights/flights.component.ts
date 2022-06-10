@@ -22,6 +22,7 @@ export class FlightsComponent implements OnInit {
   isFlightsLoaded = false
   isUserDataLoaded = false;
 
+
   constructor(
     private flightService: FlightService,
     private userService: UserService,

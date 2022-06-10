@@ -55,9 +55,7 @@
     <mat-form-field class="w-100" appearance="outline">
       <mat-label>Статус</mat-label>
       <mat-select formControlName="status">
-        <p *ngIf="isDataLoadedAirplane">
-          <mat-option *ngFor="let status of statuses" [value]="status">{{status}} </mat-option>
-        </p>
+        <mat-option *ngFor="let o of enumValues(status)" [value]="o">{{o}}</mat-option>
       </mat-select>
     </mat-form-field>
 

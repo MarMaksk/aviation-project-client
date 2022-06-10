@@ -42,4 +42,9 @@ export class AirplaneService implements ICRUD<Airplane> {
   update(entity: Airplane): Observable<Airplane> {
     return this.http.put<Airplane>(this.API + 'update/', entity);
   }
+
+  equalsByIata(o1: Airplane, o2: Airplane): boolean {
+    return o1.iataCode === o2.iataCode;
+  }
+
 }

@@ -2,14 +2,14 @@ import {Airplane} from "./airplane";
 
 export interface Flight {
   regular?: boolean,
-  iataCode: string,
+  iataCode?: string,
   flightNumber: number,
-  departure: Date,
-  flightTime: number,
-  passengersCount: number,
+  departure?: Date,
+  flightTime?: number,
+  passengersCount?: number,
   productOrderId?: number,
-  ticketPrice: number,
-  icaoCodeDeparture: string,
-  icaoCodeArrival: string,
+  ticketPrice?: number,
+  icaoCodeDeparture?: string,
+  icaoCodeArrival?: string,
   status?: string
 }

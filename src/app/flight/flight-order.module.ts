@@ -58,22 +58,7 @@ import {MatSortModule} from "@angular/material/sort";
     BrowserAnimationsModule,
     MaterialModule,
     HttpClientModule,
-    FormsModule,
-    ReactiveFormsModule,
-    AppRoutingModule,
-    MatGridListModule,
-    MatProgressBarModule,
-    MatSelectModule,
-    MatDatepickerModule,
-    NgxMatDatetimePickerModule,
-    NgxMatNativeDateModule,
-    NgxMatTimepickerModule,
-    MatAutocompleteModule,
-    MatTableModule,
-    MatTabsModule,
-    MatPaginatorModule,
-    MatProgressSpinnerModule,
-    MatSortModule
+    AppRoutingModule
   ],
   exports: [FlightOrderComponent]
 })

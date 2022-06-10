@@ -9,6 +9,8 @@ import {AirportService} from "../../../../service/airport.service";
 import {Airplane} from "../../../../models/airplane";
 import {Airport} from "../../../../models/airport";
 import {UtilService} from "../../../../service/util.service";
+import {FlightStatus} from "../../../../models/enums/flight-status";
+import {enumValues} from "../../../../../util/enum-values";
 
 @Component({
   selector: 'app-update-flight',
@@ -20,13 +22,14 @@ export class UpdateFlightComponent implements OnInit {
   public updateForm: FormGroup | any;
   airplane: Airplane[] | any;
   airport: Airport[] | any;
-  statuses: String[] | any;
   isDataLoadedAirplane = false;
   isDataLoadedAirport = false;
-  isStatusesLoaded = false;
   lastAirplane: Airplane | any
   airLoad = false;
+  status = FlightStatus
+  enumValues = enumValues
 
+  readonly equalsByIata = this.airplaneService.equalsByIata;
 
   constructor(private dialogRef: MatDialogRef<UpdateFlightComponent>,
               private fb: FormBuilder,
@@ -59,18 +62,11 @@ export class UpdateFlightComponent implements OnInit {
       }, error => this.notification.showSnackBar(
         "При получении доступных аэропортов произошла ошибка"
       ))
-    this.utilService.findAllStatus()
-      .subscribe(data => {
-        this.statuses = data
-        this.isStatusesLoaded = true
-      }, error => this.notification.showSnackBar(
-        "При получении доступных статусов полёта произошла ошибка"
-      ))
   }
 
   createUpdateForm(): FormGroup {
     return this.fb.group({
-        iataCode: [this.data.airplane, Validators.compose([Validators.required])],
+        iataCode: [this.data.flight.iataCode, Validators.compose([Validators.required])],
         departure: [this.data.flight.departure, Validators.compose([Validators.required])],
         flightTime: [this.data.flight.flightTime, Validators.compose([Validators.required])],
         passengersCount: [this.data.flight.passengersCount, Validators.compose([Validators.required])],
@@ -83,7 +79,6 @@ export class UpdateFlightComponent implements OnInit {
   }
 
   submit(): void {
-    console.log(this.updateForm.value)
     this.flightService.update({
       iataCode: this.updateForm.value.iataCode,
       flightNumber: this.data.flight.flightNumber,

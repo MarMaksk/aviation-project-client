@@ -1,21 +1,22 @@
 <div>
   <h2>Изменить профиль</h2>
   <form [formGroup]="deliveryForm">
-    <mat-label *ngIf="isDataLoadedDelivery">Статус доставки {{deliveryStatus}}</mat-label>
-    <mat-form-field class="w-100" appearance="outline">
-      <mat-label>Статус</mat-label>
-      <mat-select formControlName="status">
-        <p *ngIf="isDataLoadedStatuses">
-          <mat-option *ngFor="let status of statuses" [value]="status">{{status}} </mat-option>
-        </p>
-      </mat-select>
-    </mat-form-field>
+    <mat-label *ngIf="isDataLoadedDelivery">Статус доставки: {{deliveryStatus}}</mat-label>
+
+    <div *ngIf="deliveryStatus === 'Завершена'">
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>Сменить статус полёта?</mat-label>
+        <mat-select formControlName="status">
+          <mat-option *ngFor="let o of enumValues(status)" [value]="o">{{o}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
     <div class="row">
       <button (click)="closeDialog()" class="w-50"
               mat-button mat-dialog-close disableRipple>
         Закрыть
       </button>
-      <button color="primary" class="w-50" [disabled]="deliveryForm.invalid" (click)="submit()" mat-button
+      <button *ngIf="deliveryStatus === 'Завершена'" color="primary" class="w-50" [disabled]="deliveryForm.invalid" (click)="submit()" mat-button
               disableRipple>
         Сменить статус
       </button>

@@ -39,4 +39,9 @@ export class AirportService implements ICRUD<Airport> {
   update(entity: Airport): Observable<Airport> {
     return this.http.put<Airport>(this.API + 'update/', entity);
   }
+
+
+
 }
+
+
