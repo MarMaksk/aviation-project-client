@@ -3,7 +3,7 @@ import {Airplane} from "./airplane";
 export interface Flight {
   regular?: boolean,
   iataCode?: string,
-  flightNumber: number,
+  flightNumber: string,
   departure?: Date,
   flightTime?: number,
   passengersCount?: number,

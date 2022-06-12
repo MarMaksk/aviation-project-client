@@ -53,11 +53,8 @@ export class CheckDeliveryComponent implements OnInit {
   }
 
   submit() {
-    this.flightService.update({
+    this.flightService.updateStatus({
       flightNumber: this.data.flight.flightNumber,
-      iataCode: this.data.flight.iataCode,
-      icaoCodeArrival: this.data.flight.icaoCodeArrival,
-      icaoCodeDeparture: this.data.flight.icaoCodeDeparture,
       status: this.deliveryForm.value.status
     })
       .subscribe(() => {

@@ -26,6 +26,8 @@ import {MatPaginatorModule} from "@angular/material/paginator";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {MatSortModule} from "@angular/material/sort";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {NgxPermissionsModule} from "ngx-permissions";
+import {MatRadioModule} from "@angular/material/radio";
 
 
 @NgModule({
@@ -59,6 +61,8 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
     MatSortModule,
     FormsModule,
     ReactiveFormsModule,
+    NgxPermissionsModule,
+    MatRadioModule
   ]
 })
 export class MaterialModule {

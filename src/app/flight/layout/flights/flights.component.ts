@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Flight} from "../../models/flight";
 import {User} from "../../../user/models/user";
 import {FlightService} from "../../service/flight.service";
@@ -11,6 +11,9 @@ import {AddFlightComponent} from "./add-flight/add-flight.component";
 import {CheckDeliveryComponent} from "./check-delivery/check-delivery.component";
 import {NgxPermissionsService} from "ngx-permissions";
 import {TokenStorageService} from "../../../user/service/token-storage.service";
+import {FlightStatus} from "../../models/enums/flight-status";
+import {enumValues} from 'src/app/util/enum-values';
+import {AlternativeFlightsComponent} from "./alternative-flights/alternative-flights.component";
 
 @Component({
   selector: 'app-flights',
@@ -23,6 +26,10 @@ export class FlightsComponent implements OnInit {
   user: User | any;
   isFlightsLoaded = false
   isUserDataLoaded = false;
+  status = FlightStatus
+  enumValues = enumValues
+  changeStatus = '';
+  newStatus: string | any
 
 
   constructor(
@@ -66,5 +73,25 @@ export class FlightsComponent implements OnInit {
       flight: flight
     }
     this.dialog.open(CheckDeliveryComponent, dialogConfig)
+  }
+
+  alternativeFlight(flightNumber: string) {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.width = '450px'
+    dialogConfig.data = {
+      flightNumber: flightNumber
+    }
+    this.dialog.open(AlternativeFlightsComponent, dialogConfig)
+  }
+
+  showChangeStatus(flightNumber: string) {
+    this.changeStatus = flightNumber
+  }
+
+  submitChangeStatus() {
+    this.flightService.updateStatus({
+      flightNumber: this.changeStatus,
+      status: this.newStatus
+    })
   }
 }

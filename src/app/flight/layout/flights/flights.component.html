@@ -6,6 +6,20 @@
   </div>
 </div>
 <br>
+<div *ngIf="changeStatus != ''">
+  <div>
+  <h2>Выбрать новый статус полёта для рейса номер {{changeStatus}}:</h2>
+  <mat-radio-group class="w-100 radio-group" appearance="outline" [(ngModel)]="newStatus">
+      <mat-radio-button class="radio-button" *ngFor="let o of enumValues(status)" [value]="o">{{o}}</mat-radio-button>
+  </mat-radio-group>
+  <button mat-raised-button color="primary" (click)="submitChangeStatus()">
+    Сменить
+  </button>
+  <button mat-raised-button color="primary" (click)="showChangeStatus('')">
+    Отмена
+  </button>
+  </div>
+</div>
 <div *ngIf="isFlightsLoaded && isUserDataLoaded" class="index-page">
   <mat-card class="post-card" *ngFor="let flight of flights; let i = index">
     <mat-card>
@@ -41,13 +55,16 @@
        flight.icaoCodeDeparture]">
           Всё о полёте
         </button>
-
-        <button *ngxPermissionsOnly="['ROLE_ADMIN']" mat-raised-button color="primary" (click)="checkDelivery(flight)">
+        <button *ngxPermissionsOnly="['ROLE_ADMIN', 'ROLE_USER']" mat-raised-button color="primary"
+                (click)="checkDelivery(flight)">
           Кейтеринг
         </button>
         <br><br>
-        <button mat-raised-button color="primary">
+        <button mat-raised-button color="primary" (click)="showChangeStatus(flight.flightNumber)">
           Изменить статус
+        </button>
+        <button mat-raised-button color="primary" (click)="alternativeFlight(flight.flightNumber)">
+          Выбрать альтернативный полёт
         </button>
       </mat-card-actions>
       <mat-card-footer>

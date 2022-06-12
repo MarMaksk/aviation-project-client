@@ -20,6 +20,8 @@ import {AppRoutingModule} from "../app-routing.module";
 import {HttpClientModule} from "@angular/common/http";
 import {FlightComponent} from "./layout/flights/flight/flight.component";
 import {NgxPermissionsModule} from "ngx-permissions";
+import { AlternativeFlightsComponent } from './layout/flights/alternative-flights/alternative-flights.component';
+import {MatRadioModule} from "@angular/material/radio";
 
 
 @NgModule({
@@ -35,16 +37,16 @@ import {NgxPermissionsModule} from "ngx-permissions";
     ExaminationsComponent,
     AddExaminationComponent,
     AirportsComponent,
-    AddAirportComponent],
-  imports: [
-    CommonModule,
-    BrowserModule,
-    BrowserAnimationsModule,
-    MaterialModule,
-    HttpClientModule,
-    AppRoutingModule,
-    NgxPermissionsModule
-  ],
+    AddAirportComponent,
+    AlternativeFlightsComponent],
+    imports: [
+        CommonModule,
+        BrowserModule,
+        BrowserAnimationsModule,
+        MaterialModule,
+        HttpClientModule,
+        AppRoutingModule
+    ],
   exports: [FlightOrderComponent]
 })
 export class FlightOrderModule {

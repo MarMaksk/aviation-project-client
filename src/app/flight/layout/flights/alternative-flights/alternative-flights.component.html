@@ -1,0 +1,49 @@
+<div *ngIf="flights.length == 0; else alternative_flights">Альтернативных рейсов не найдено</div>
+<ng-template #alternative_flights>
+  <label id="radio-group-label">Выберите альтернативный рейс:</label>
+  <br>
+  <br>
+  <mat-radio-group
+    aria-labelledby="radio-group-label"
+    class="example-radio-group"
+    [(ngModel)]="choose">
+    <mat-radio-button class="radio-button" *ngFor="let flight of flights" [value]="flight">
+      {{flight.flightNumber}}
+    </mat-radio-button>
+  </mat-radio-group>
+  <div *ngIf="choose!=null">
+    <mat-card>
+      <mat-card-title>Подробности о рейсе {{choose.flightNumber}}</mat-card-title>
+      <mat-card-subtitle>
+        <div *ngIf="choose.regular===true; then regular else noRegular">
+        </div>
+        <ng-template #regular>
+          регулярный
+        </ng-template>
+        <ng-template #noRegular>
+          чартерный
+        </ng-template>
+      </mat-card-subtitle>
+      <mat-card-content>
+        <h3>Информация о самолёте</h3>
+        иата код самолёта: {{choose.iataCode}}<br>
+        загруженность, чел: {{choose.passengersCount}}<br>
+        <h3>Информация о рейсе</h3>
+        Вылет из аэропорта {{choose.icaoCodeArrival}}<br>
+        Прилёт в аэропорт {{choose.icaoCodeDeparture}}<br>
+        Цена билета {{choose.ticketPrice}}$<br>
+        Дата вылета {{choose.departure | date:'short'}}<br>
+        Время в полёте {{choose.flightTime}}<br>
+        Статус: {{choose.status}}<br>
+      </mat-card-content>
+    </mat-card>
+    <button (click)="submit()" mat-button
+            disableRipple>
+      Выбрать
+    </button>
+  </div>
+  <button (click)="closeDialog()" class="w-50"
+          mat-button mat-dialog-close disableRipple>
+    Закрыть
+  </button>
+</ng-template>
