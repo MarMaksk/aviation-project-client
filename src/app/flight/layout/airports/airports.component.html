@@ -1,7 +1,8 @@
 <br>
 <div class="container">
   <div class="fixed"><h1>Аэропорты</h1></div>
-  <div class="rubbery"><button mat-flat-button color="primary" (click)="addAirport()">Добавить аэропорт</button></div>
+  <div class="rubbery"><button mat-flat-button color="primary" (click)="addAirport()" *ngxPermissionsOnly="['ROLE_SYSTEM']">Добавить аэропорт</button></div>
+  <button mat-button (click)="refresh()"><mat-icon>refresh</mat-icon></button>
 </div>
 <div>
   <mat-divider style="margin-top: 20px; margin-bottom: 20px;"></mat-divider>

@@ -53,13 +53,13 @@ export class AddFlightComponent implements OnInit {
   createAddForm(): FormGroup {
     return this.fb.group({
         regular: ['', Validators.compose([Validators.required])],
-        iataCode: ['', Validators.compose([Validators.required])],
+        iataCode: ['', Validators.compose([Validators.required, Validators.maxLength(3)])],
         departure: ['', Validators.compose([Validators.required])],
         flightTime: ['', Validators.compose([Validators.required])],
         passengersCount: ['', Validators.compose([Validators.required])],
         ticketPrice: ['', Validators.compose([Validators.required])],
-        icaoCodeDeparture: ['', Validators.compose([Validators.required])],
-        icaoCodeArrival: ['', Validators.compose([Validators.required])],
+        icaoCodeDeparture: ['', Validators.compose([Validators.required, Validators.maxLength(4)])],
+        icaoCodeArrival: ['', Validators.compose([Validators.required, Validators.maxLength(4)])],
       }
     )
   }
@@ -80,7 +80,6 @@ export class AddFlightComponent implements OnInit {
       .subscribe(() => {
         this.notification.showSnackBar("Полёт создан")
         this.dialogRef.close()
-        window.location.reload();
       }, error => this.notification.showSnackBar("Произошла ошибка при создание полёта"))
   }
 

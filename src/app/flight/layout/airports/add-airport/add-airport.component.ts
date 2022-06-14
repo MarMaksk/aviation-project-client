@@ -44,7 +44,6 @@ export class AddAirportComponent implements OnInit {
       .subscribe(() => {
         this.notification.showSnackBar("Добавлено")
         this.dialogRef.close()
-        window.location.reload()
       })
   }
 

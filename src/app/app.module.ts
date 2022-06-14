@@ -9,14 +9,16 @@ import {CateringModule} from "./catering/catering.module";
 import {UserModule} from "./user/user.module";
 import {MaterialModule} from "./material.module";
 import {NgxPermissionsModule} from "ngx-permissions";
+import {NavigationComponent} from "./navigation/navigation.component";
+import {AppRoutingModule} from "./app-routing.module";
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent, NavigationComponent
   ],
   imports: [
     BrowserModule, FlightOrderModule, BrowserAnimationsModule,
-    RouterModule, CateringModule, UserModule, MaterialModule,
+    RouterModule, AppRoutingModule, CateringModule, UserModule, MaterialModule,
     NgxPermissionsModule.forRoot()
   ],
   providers: [],

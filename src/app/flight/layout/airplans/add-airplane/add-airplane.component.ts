@@ -42,7 +42,6 @@ export class AddAirplaneComponent implements OnInit {
       .subscribe(() => {
         this.notification.showSnackBar("Самолёт добавлен")
         this.dialogRef.close()
-        window.location.reload();
       }, error => this.notification.showSnackBar("Произшла ошибка при добавлении самолёта"))
   }
 

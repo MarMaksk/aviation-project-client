@@ -39,17 +39,16 @@ export class FlightsComponent implements OnInit {
     private examinationService: ExaminationService,
     private airplaneService: AirplaneService,
     private dialog: MatDialog,
-    private permissionsService: NgxPermissionsService,
-    private tokenStorage: TokenStorageService
   ) {
   }
 
   ngOnInit(): void {
-    this.permissionsService.loadPermissions(this.tokenStorage.getRoles());
-    console.log(this.permissionsService.getPermissions())
+    this.refresh()
+  }
+
+  refresh() {
     this.flightService.findAllFlight()
       .subscribe(data => {
-        console.log(data);
         this.flights = data;
         this.isFlightsLoaded = true;
       })
@@ -92,6 +91,14 @@ export class FlightsComponent implements OnInit {
     this.flightService.updateStatus({
       flightNumber: this.changeStatus,
       status: this.newStatus
-    })
+    }).subscribe(()=> this.notificationService.showSnackBar('Статус обновлён'),
+      error => this.notificationService.showSnackBar('Ошибка'))
+    this.changeStatus = ''
+  }
+
+  delete(flightNumber: string) {
+    this.flightService.delete(flightNumber).subscribe(() =>
+      this.notificationService.showSnackBar("Успешно удалено"),
+      error => this.notificationService.showSnackBar("Ошибка"))
   }
 }

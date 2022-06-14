@@ -13,7 +13,15 @@ export class ProductService implements ICRUD<Product> {
   constructor(private http: HttpClient) {
   }
 
-  API: string = 'http://localhost:8080/avia/catering/product/';
+  API: string = 'http://localhost:9000/product/';
+
+  findAll(): Observable<Product[]> {
+    return this.http.get<Product[]>(this.API + `getAll`);
+  }
+
+  findAllForOrder(icaoCode: string, iataCode: string): Observable<Product[]> {
+    return this.http.get<Product[]>(this.API + `getAll/${icaoCode}/${iataCode}`);
+  }
 
   findAllWithPagination(sort: string, direction: string, order: number, page: number): Observable<PageableEntity> {
     return this.http.get<PageableEntity>(this.API + `getAll/${sort}/${order}/${page}/${direction}`);

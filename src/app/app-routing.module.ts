@@ -9,17 +9,25 @@ import {RegistrationComponent} from "./user/auth/registration/registration.compo
 import {ProfileComponent} from "./user/user/profile/profile.component";
 import {LoginComponent} from "./user/auth/login/login.component";
 import {AuthGuardService} from "./user/helper/auth-guard.service";
+import {AppComponent} from "./app.component";
+import {OrdersComponent} from "./catering/layout/orders/orders.component";
+import {OrderComponent} from "./catering/layout/orders/order/order.component";
+import {ProductsComponent} from "./catering/layout/products/products.component";
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegistrationComponent},
+  {path: 'main', component: AppComponent},
   {path: 'flights', component: FlightsComponent, canActivate: [AuthGuardService]},
-  {path: 'flights/:flightNumber/:iata/:icaoArrival/:icaoDeparture', component: FlightComponent, canActivate: [AuthGuardService]},
+  {path: 'flights/:flightNumber', component: FlightComponent, canActivate: [AuthGuardService]},
   {path: 'profile', component: ProfileComponent, canActivate: [AuthGuardService]},
   {path: 'airplanes', component: AirplaneComponent, canActivate: [AuthGuardService]},
   {path: 'airports', component: AirportsComponent, canActivate: [AuthGuardService]},
   {path: 'examinations', component: ExaminationsComponent, canActivate: [AuthGuardService]},
-  {path: '', redirectTo: 'flights', pathMatch: 'full'},
+  {path: 'catering', component: OrdersComponent, canActivate: [AuthGuardService]},
+  {path: 'catering/:productOrderId', component: OrderComponent, canActivate: [AuthGuardService]},
+  {path: 'products', component: ProductsComponent, canActivate: [AuthGuardService]},
+  {path: '', redirectTo: 'main', pathMatch: 'full'},
 ]
 
 @NgModule({

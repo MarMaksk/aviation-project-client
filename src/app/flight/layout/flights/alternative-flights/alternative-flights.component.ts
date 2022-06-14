@@ -31,7 +31,6 @@ export class AlternativeFlightsComponent implements OnInit {
     this.flightService.selectAlternativeFlight(this.data.flightNumber, this.choose.flightNumber)
       .subscribe(data => {
         this.notification.showSnackBar('Альтернативный рейс выбран')
-        window.location.reload()
       }, error => this.notification.showSnackBar('Ошибка при выборе рейса'))
   }
 

@@ -11,8 +11,6 @@ import {FlightsComponent} from "./layout/flights/flights.component";
 import {AddFlightComponent} from "./layout/flights/add-flight/add-flight.component";
 import {CheckDeliveryComponent} from "./layout/flights/check-delivery/check-delivery.component";
 import {ExaminationsComponent} from "./layout/examinations/examinations.component";
-import {NavigationComponent} from "./layout/navigation/navigation.component";
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MaterialModule} from "../material.module";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {BrowserModule} from "@angular/platform-browser";
@@ -26,7 +24,6 @@ import {MatRadioModule} from "@angular/material/radio";
 
 @NgModule({
   declarations: [FlightOrderComponent,
-    NavigationComponent,
     FlightsComponent,
     FlightComponent,
     AddFlightComponent,

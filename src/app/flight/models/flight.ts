@@ -11,5 +11,6 @@ export interface Flight {
   ticketPrice?: number,
   icaoCodeDeparture?: string,
   icaoCodeArrival?: string,
-  status?: string
+  status?: string,
+  flightNumberAltFlight?: string
 }

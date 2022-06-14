@@ -37,8 +37,7 @@ export class UpdateFlightComponent implements OnInit {
               @Inject(MAT_DIALOG_DATA) public data: any,
               private flightService: FlightService,
               private airplaneService: AirplaneService,
-              private airportService: AirportService,
-              private utilService: UtilService) {
+              private airportService: AirportService) {
   }
 
   ngOnInit(): void {
@@ -93,7 +92,6 @@ export class UpdateFlightComponent implements OnInit {
       .subscribe(() => {
         this.notification.showSnackBar("Полёт обновлён")
         this.dialogRef.close()
-        window.location.reload();
       }, error => this.notification.showSnackBar("Произшла ошибка при обновлении полёта"))
   }
 

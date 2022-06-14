@@ -33,34 +33,38 @@ export class FlightComponent implements OnInit {
               private airplaneService: AirplaneService,
               private notificationService: NotificationService,
               private dialog: MatDialog
-              ) {
+  ) {
   }
 
   ngOnInit(): void {
+    this.refresh()
+  }
+
+  refresh() {
     this.route.params.subscribe((params: Params) => {
       this.flightService.find(params['flightNumber'])
         .subscribe(data => {
           this.flight = data
           this.isDataLoadedFlight = true
+          this.airplaneService.find(data.iataCode)
+            .subscribe(data => {
+              this.airplane = data
+              this.isDataLoadedAirplane = true;
+            }, error =>
+              this.errors = this.errors + 'Информация о самолёте не загружена.\n')
+          this.arrAirport = this.airportService.find(data.icaoCodeArrival)
+            .subscribe(data => {
+              this.arrAirport = data
+              this.isDataLoadedAirportArr = true;
+            }, error =>
+              this.errors = this.errors + 'Информация об аэропорте прибытия не загружена.\n')
+          this.depAirport = this.airportService.find(data.icaoCodeDeparture).subscribe(data => {
+            this.depAirport = data
+            this.isDataLoadedAirportDep = true;
+          }, error =>
+            this.errors = this.errors + 'Информация об аэропорте вылета не загружена.\n')
         }, error =>
           this.errors = this.errors + 'Информация о полёте не загружена.\n')
-      this.airplaneService.find(params['iata'])
-        .subscribe(data => {
-          this.airplane = data
-          this.isDataLoadedAirplane = true;
-        }, error =>
-          this.errors = this.errors + 'Информация о самолёте не загружена.\n')
-      this.arrAirport = this.airportService.find(params['icaoArrival'])
-        .subscribe(data => {
-        this.arrAirport = data
-        this.isDataLoadedAirportArr = true;
-      }, error =>
-        this.errors = this.errors + 'Информация об аэропорте прибытия не загружена.\n')
-      this.depAirport = this.airportService.find(params['icaoDeparture']).subscribe(data => {
-        this.depAirport = data
-        this.isDataLoadedAirportDep = true;
-      }, error =>
-        this.errors = this.errors + 'Информация об аэропорте вылета не загружена.\n')
     })
   }
 
@@ -68,8 +72,7 @@ export class FlightComponent implements OnInit {
     const dialogFlightEditConfig = new MatDialogConfig();
     dialogFlightEditConfig.width = '400px'
     dialogFlightEditConfig.data = {
-      flight: this.flight,
-      airplane: this.airplane
+      flight: this.flight
     }
     this.dialog.open(UpdateFlightComponent, dialogFlightEditConfig)
   }

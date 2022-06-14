@@ -16,9 +16,7 @@ import {FlightService} from "../../../service/flight.service";
 export class CheckDeliveryComponent implements OnInit {
 
   public deliveryForm: FormGroup | any;
-  isDataLoadedStatuses = false
   isDataLoadedDelivery = false
-  statuses: string[] | any
   deliveryStatus: string | any
   status = FlightStatus
   enumValues = enumValues
@@ -38,13 +36,6 @@ export class CheckDeliveryComponent implements OnInit {
         this.deliveryStatus = enumCompare(data.toString())
         this.isDataLoadedDelivery = true
       }, error => this.notification.showSnackBar("Не найден статус"));
-    this.util.findAllStatus()
-      .subscribe(data => {
-        this.statuses = data
-        this.isDataLoadedStatuses = true
-      }, error => this.notification.showSnackBar(
-        "При получении доступных статусов полёта произошла ошибка"
-      ))
     this.deliveryForm = this.createDeliveryForm();
   }
 
@@ -60,7 +51,6 @@ export class CheckDeliveryComponent implements OnInit {
       .subscribe(() => {
         this.notification.showSnackBar("Полёт обновлён")
         this.dialogRef.close()
-        window.location.reload();
       }, error => this.notification.showSnackBar("Произшла ошибка при обновлении полёта"))
   }
 

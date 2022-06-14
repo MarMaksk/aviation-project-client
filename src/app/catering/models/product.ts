@@ -1,7 +1,8 @@
+import {Tag} from "./tag";
+
 export interface Product {
-  code: number,
+  code?: number,
   name: string,
-  manufacturedDate: Date,
   expirationDate: number,
-  tags: string,
+  tags: Tag[]
 }

@@ -1,23 +1,25 @@
+<div *ngxPermissionsOnly="['ROLE_MANAGER', 'ROLE_SYSTEM', 'ROLE_DISPATCHER']">
 <br>
 <div class="container">
   <div class="fixed"><h1>Полёты</h1></div>
-  <div class="rubbery">
+  <div class="rubbery" *ngxPermissionsOnly="['ROLE_MANAGER', 'ROLE_SYSTEM']">
     <button mat-flat-button color="primary" (click)="addFlight()">Создать новый полёт</button>
   </div>
+  <button mat-button (click)="refresh()"><mat-icon>refresh</mat-icon></button>
 </div>
 <br>
 <div *ngIf="changeStatus != ''">
   <div>
-  <h2>Выбрать новый статус полёта для рейса номер {{changeStatus}}:</h2>
-  <mat-radio-group class="w-100 radio-group" appearance="outline" [(ngModel)]="newStatus">
+    <h2>Выбрать новый статус полёта для рейса номер {{changeStatus}}:</h2>
+    <mat-radio-group class="w-100 radio-group" appearance="outline" [(ngModel)]="newStatus">
       <mat-radio-button class="radio-button" *ngFor="let o of enumValues(status)" [value]="o">{{o}}</mat-radio-button>
-  </mat-radio-group>
-  <button mat-raised-button color="primary" (click)="submitChangeStatus()">
-    Сменить
-  </button>
-  <button mat-raised-button color="primary" (click)="showChangeStatus('')">
-    Отмена
-  </button>
+    </mat-radio-group>
+    <button mat-raised-button color="primary" (click)="submitChangeStatus()">
+      Сменить
+    </button>
+    <button mat-raised-button color="primary" (click)="showChangeStatus('')">
+      Отмена
+    </button>
   </div>
 </div>
 <div *ngIf="isFlightsLoaded && isUserDataLoaded" class="index-page">
@@ -45,27 +47,33 @@
         Дата вылета {{flight.departure | date:'short'}}<br>
         Время в полёте {{flight.flightTime}}<br>
         Статус: {{flight.status}}<br>
+        <p *ngIf="flight.flightNumberAltFlight != null">Альтернативный рейс:
+          <button mat-button color="warn" [routerLink]="['/flights', flight.flightNumberAltFlight]">
+            {{flight.flightNumberAltFlight}}</button>
+        </p>
       </mat-card-content>
       <mat-divider inset></mat-divider>
       <mat-card-actions>
-        <button mat-raised-button color="primary" [routerLink]="['/flights',
-       flight.flightNumber,
-       flight.iataCode,
-       flight.icaoCodeArrival,
-       flight.icaoCodeDeparture]">
+        <button mat-raised-button color="primary" [routerLink]="['/flights', flight.flightNumber]">
           Всё о полёте
         </button>
-        <button *ngxPermissionsOnly="['ROLE_ADMIN', 'ROLE_USER']" mat-raised-button color="primary"
-                (click)="checkDelivery(flight)">
-          Кейтеринг
-        </button>
-        <br><br>
-        <button mat-raised-button color="primary" (click)="showChangeStatus(flight.flightNumber)">
-          Изменить статус
-        </button>
-        <button mat-raised-button color="primary" (click)="alternativeFlight(flight.flightNumber)">
-          Выбрать альтернативный полёт
-        </button>
+        <div *ngxPermissionsOnly="['ROLE_MANAGER', 'ROLE_SYSTEM']">
+          <button mat-raised-button color="primary"
+                  (click)="checkDelivery(flight)">
+            Кейтеринг
+          </button>
+          <br><br>
+          <button mat-raised-button color="primary" (click)="showChangeStatus(flight.flightNumber)">
+            Изменить статус
+          </button>
+          <button mat-raised-button color="primary" (click)="alternativeFlight(flight.flightNumber)">
+            Выбрать альтернативный полёт
+          </button>
+          <button *ngIf="flight.status === 'Выполнен' || flight.status === 'Отменён'" mat-raised-button color="primary"
+                  (click)="delete(flight.flightNumber)">
+            Удалить
+          </button>
+        </div>
       </mat-card-actions>
       <mat-card-footer>
         <mat-progress-bar mode="query"></mat-progress-bar>
@@ -73,5 +81,5 @@
     </mat-card>
   </mat-card>
 </div>
-
+</div>
 

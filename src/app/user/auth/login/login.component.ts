@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
     private formBuilder: FormBuilder
   ) {
     if (this.tokeStorage.getUser()) {
-      this.router.navigate(['flights']);
+      this.router.navigate(['main']);
     }
   }
 
@@ -42,16 +42,15 @@ export class LoginComponent implements OnInit {
       username: this.loginForm.value.username,
       password: this.loginForm.value.password
     }).subscribe(data => {
-      console.log(data)
       this.tokeStorage.saveToken(data.token)
+      this.tokeStorage.saveUser(data)
       this.authService.loadRoles()
         .subscribe(roles => {
           this.tokeStorage.saveRoles(roles)
+          this.notificationService.showSnackBar("Successfully logged in")
+          this.router.navigate(['/main'])
+          window.location.reload();
         })
-      this.tokeStorage.saveUser(data)
-      this.notificationService.showSnackBar("Successfully logged in")
-      this.router.navigate(['/flights'])
-      window.location.reload();
     }, error => {
       console.log(error);
       this.notificationService.showSnackBar(error.message)

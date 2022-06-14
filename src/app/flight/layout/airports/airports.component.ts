@@ -39,6 +39,10 @@ export class AirportsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.refresh()
+  }
+
+  refresh() {
     this.refreshAirportsTable(this.page, this.size);
   }
 

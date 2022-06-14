@@ -12,6 +12,7 @@ import {MatTableDataSource} from "@angular/material/table";
 import {MatPaginator, PageEvent} from "@angular/material/paginator";
 import {MatSort} from "@angular/material/sort";
 import {AddExaminationComponent} from "./add-examination/add-examination.component";
+import {TokenStorageService} from "../../../user/service/token-storage.service";
 
 @Component({
   selector: 'app-airplans',
@@ -28,7 +29,7 @@ import {AddExaminationComponent} from "./add-examination/add-examination.compone
 export class AirplaneComponent implements OnInit {
 
   airplane: Airplane[] | any;
-  displayedColumns = ['iataCode', 'model', 'loadCapacity', 'examination'];
+  displayedColumns: string[] | any
   page: number = 0;
   size: number = 4;
   totalCount: number = 0;
@@ -40,10 +41,21 @@ export class AirplaneComponent implements OnInit {
 
   constructor(private notification: NotificationService,
               private airplaneService: AirplaneService,
-              private dialog: MatDialog) {
+              private dialog: MatDialog,
+              private storage: TokenStorageService) {
   }
 
   ngOnInit(): void {
+    if (this.storage.getRoles().indexOf("ROLE_MAINTENANCE") != -1 ||
+      this.storage.getRoles().indexOf("ROLE_SYSTEM") != -1) {
+      console.log("true")
+      this.displayedColumns = ['iataCode', 'model', 'loadCapacity', 'examination'];
+    } else
+      this.displayedColumns = ['iataCode', 'model', 'loadCapacity'];
+    this.refresh()
+  }
+
+  refresh() {
     this.refreshAirplanesTable(this.page, this.size);
   }
 
@@ -64,7 +76,6 @@ export class AirplaneComponent implements OnInit {
     this.airplane = [];
     this.airplaneService.findAllWithPagination(this.currentSort.active, this.currentSort.direction, size, page)
       .subscribe(data => {
-        console.log(data)
         this.totalCount = data.totalElements
         this.airplane = data.content;
         this.isDataLoaded = true;

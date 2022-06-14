@@ -6,6 +6,7 @@ import {MatSort} from "@angular/material/sort";
 import {AddAirportComponent} from "../../../flight/layout/airports/add-airport/add-airport.component";
 import {Order} from "../../models/order";
 import {OrderService} from "../../service/order.service";
+import {Flight} from "../../../flight/models/flight";
 
 @Component({
   selector: 'app-orders',
@@ -14,9 +15,9 @@ import {OrderService} from "../../service/order.service";
 })
 export class OrdersComponent implements OnInit {
 
-  displayedColumns: string[] = ['icaoCode', 'iataCode', 'lastDate', 'deliveryTime', 'status'];
+  displayedColumns: string[] = ['icaoCode', 'iataCode', 'lastDate', 'deliveryTime', 'status', 'info'];
   page: number = 0;
-  size: number = 4;
+  size: number = 10;
   totalCount: number = 0;
   isDataLoaded = false;
 
@@ -28,15 +29,14 @@ export class OrdersComponent implements OnInit {
   orders: Order[] = [];
 
   constructor(private orderService: OrderService,
-              private notification: NotificationService,
-              private dialog: MatDialog) {
+              private notification: NotificationService) {
   }
 
   ngOnInit(): void {
     this.refreshOrdersTable(this.page, this.size);
   }
 
-  loadOrders(event: PageEvent): PageEvent {
+  loadOrders(event: any): PageEvent {
     this.page = event.pageIndex;
     this.size = event.pageSize;
 
@@ -53,16 +53,10 @@ export class OrdersComponent implements OnInit {
     this.orders = [];
     this.orderService.findAllWithPagination(this.currentSort.active, this.currentSort.direction, size, page)
       .subscribe(data => {
-        console.log(data)
         this.totalCount = data.totalElements
         this.orders = data.content;
         this.isDataLoaded = true;
       }, error => this.notification.showSnackBar("При получении заказов на доставку произошла ошибка"))
   }
 
-  addOrder(): void {
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.width = '400px'
-    this.dialog.open(AddAirportComponent, dialogConfig)
-  }
 }

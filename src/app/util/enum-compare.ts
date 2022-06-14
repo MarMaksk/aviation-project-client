@@ -1,4 +1,4 @@
-import {DeliveryStatus} from "../flight/models/enums/delivery-status";
+import {DeliveryStatus} from "./enums/delivery-status";
 import {enumValues} from "./enum-values";
 
 export function enumCompare(val: string): string | any {

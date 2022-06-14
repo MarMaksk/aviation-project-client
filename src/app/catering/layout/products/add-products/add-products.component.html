@@ -1,0 +1,54 @@
+<div>
+  <h2>Добавить продукт</h2>
+  <form [formGroup]="addForm">
+    <mat-form-field class="w-100" appearance="outline">
+      <mat-label>Название</mat-label>
+      <input matInput formControlName="name">
+    </mat-form-field>
+
+    <mat-form-field class="w-100" appearance="outline">
+      <mat-label>Срок годности в днях</mat-label>
+      <input type="number" matInput formControlName="expirationDate">
+    </mat-form-field>
+
+    <form>
+      <mat-form-field class="example-chip-list" appearance="fill">
+        <mat-label>Теги</mat-label>
+        <mat-chip-list #chipList aria-label="Fruit selection">
+          <mat-chip
+            *ngFor="let tag of selectedTags"
+            (removed)="remove(tag)">
+            {{tag}}
+            <button matChipRemove>
+              <mat-icon>cancel</mat-icon>
+            </button>
+          </mat-chip>
+          <input
+            placeholder="New tag..."
+            #fruitInput
+            [formControl]="formControl"
+            [matAutocomplete]="auto"
+            [matChipInputFor]="chipList"
+            [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+            (matChipInputTokenEnd)="add($event)">
+        </mat-chip-list>
+        <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+          <mat-option *ngFor="let tag of filteredTags | async" [value]="tag">
+            {{tag}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </form>
+
+    <div class="row">
+      <button (click)="closeDialog()" class="w-50"
+              mat-button mat-dialog-close disableRipple>
+        Закрыть
+      </button>
+      <button color="primary" class="w-50" [disabled]="addForm.invalid" (click)="submit()" mat-button
+              disableRipple>
+        Добавить
+      </button>
+    </div>
+  </form>
+</div>

@@ -22,7 +22,7 @@ export class RegistrationComponent implements OnInit {
     private formBuilder: FormBuilder
   ) {
     if (this.tokeStorage.getUser()) {
-      this.router.navigate(['flights']);
+      this.router.navigate(['main']);
     }
   }
 
@@ -51,11 +51,13 @@ export class RegistrationComponent implements OnInit {
       console.log(data)
       this.tokeStorage.saveToken(data.token)
       this.tokeStorage.saveUser(data)
-      this.notificationService.showSnackBar("Successfully register and login in")
-      this.router.navigate(['/main'])
-      window.location.reload();
-      // console.log(data);
-      // this.notificationService.showSnackBar('Successfully Registered!');
+      this.authService.loadRoles()
+        .subscribe(roles => {
+          this.tokeStorage.saveRoles(roles)
+          this.notificationService.showSnackBar("Successfully register and login in")
+          this.router.navigate(['/main'])
+          window.location.reload();
+        })
     }, error => {
       console.log(error);
       this.notificationService.showSnackBar(error.message)

@@ -1,0 +1,36 @@
+<div>
+  <h2>Редактирование заявки</h2>
+  <form [formGroup]="deliveryForm">
+    <mat-label>Статус заявки: </mat-label>
+
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>Смена статуса заявки</mat-label>
+        <mat-select formControlName="status">
+          <mat-option *ngFor="let o of enumValues(status)" [value]="o">{{o}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+    <br>
+    <mat-label>Дата и время доставки: </mat-label>
+    <mat-form-field class="w-100" appearance="outline">
+      <mat-label>Дата и время доставки</mat-label>
+      <input class="w-100" appearance="outline" matInput formControlName="deliveryTime" [ngxMatDatetimePicker]="picker"
+             [disabled]="false" readonly>
+      <mat-datepicker-toggle matSuffix [for]="$any(picker)"></mat-datepicker-toggle>
+      <ngx-mat-datetime-picker #picker [showSpinners]="true" [showSeconds]="false"
+                               [enableMeridian]="false">
+      </ngx-mat-datetime-picker>
+    </mat-form-field>
+    <div class="row">
+      <button (click)="closeDialog()" class="w-50"
+              mat-button mat-dialog-close disableRipple>
+        Закрыть
+      </button>
+      <button color="primary" class="w-50" [disabled]="deliveryForm.invalid" (click)="submit()" mat-button
+              disableRipple>
+        Сохранить
+      </button>
+    </div>
+  </form>
+</div>
+

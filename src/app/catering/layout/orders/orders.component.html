@@ -1,9 +1,6 @@
 <br>
 <div class="container">
   <div class="fixed"><h1>Заказы на доставку</h1></div>
-  <div class="rubbery">
-    <button mat-flat-button color="primary" (click)="addOrder()">Добавить самолёт</button>
-  </div>
 </div>
 
 <div>
@@ -15,29 +12,38 @@
          (matSortChange)="applySort($event)">
     <ng-container matColumnDef="iataCode">
       <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear> ИАТА код</th>
-      <td mat-cell *matCellDef="let air"> {{air.iataCode}} </td>
+      <td mat-cell *matCellDef="let order"> {{order.iataCode}} </td>
     </ng-container>
 
     <ng-container matColumnDef="icaoCode">
       <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear> ИКАО код</th>
-      <td mat-cell *matCellDef="let air"> {{air.icaoCode}} </td>
+      <td mat-cell *matCellDef="let order"> {{order.icaoCode}} </td>
     </ng-container>
 
     <ng-container matColumnDef="lastDate">
       <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear> Крайний срок</th>
-      <td mat-cell *matCellDef="let air">{{air.lastDate}}</td>
+      <td mat-cell *matCellDef="let order">{{order.lastDate  | date:'short'}}</td>
     </ng-container>
 
     <ng-container matColumnDef="deliveryTime">
       <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear> Время доставки</th>
-      <td mat-cell *matCellDef="let air">{{air.deliveryTime}}</td>
+      <td mat-cell *matCellDef="let order">
+        <p *ngIf="order.deliveryTime!=null; else notDelivered">{{order.deliveryTime  | date:'short'}}</p>
+        <ng-template #notDelivered>Не доставлено</ng-template>
+      </td>
     </ng-container>
 
     <ng-container matColumnDef="status">
       <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear> Статус</th>
       <td mat-cell *matCellDef="let air">{{air.status}}</td>
     </ng-container>
-
+    <ng-container matColumnDef="info">
+      <th mat-header-cell *matHeaderCellDef> Добавить проверку</th>
+      <button mat-cell *matCellDef="let order" mat-raised-button color="primary"
+              [routerLink]="['/catering', order.productOrderId]">
+        Knock
+      </button>
+    </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
@@ -47,7 +53,7 @@
     [length]="totalCount"
     [pageIndex]="page"
     [pageSize]="size"
-    [pageSizeOptions]="[1, 4, 5, 6]"
+    [pageSizeOptions]="[10, 15, 20, 25]"
     (page)="loadOrders($event)"
   ></mat-paginator>
 </div>
