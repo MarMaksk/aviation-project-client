@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {AfterContentInit, Component, OnInit, ViewChild} from '@angular/core';
 import {Order} from "../../../models/order";
 import {Airplane} from "../../../../flight/models/airplane";
 import {MatTable, MatTableDataSource} from "@angular/material/table";
@@ -47,8 +47,22 @@ export class OrderComponent implements OnInit {
     })
   }
 
+  checkStatus(): void {
+    if (this.order.status === "Создана") {
+      this.order.status = "Обрабатывается"
+      this.orderService.update(this.order)
+        .subscribe(() => this.notification.showSnackBar('Статус изменён на: обрабатывается'))
+    }
+    if (this.order.status === "Обрабатывается" && this.order.products.length > 0) {
+      this.order.status = "В процессе"
+      this.orderService.update(this.order)
+        .subscribe(() => this.notification.showSnackBar('Статус изменён на: В процессе'))
+    }
+  }
+
   refresh() {
     this.selection = new SelectionModel<Product>(true, []);
+    this.checkStatus()
     if (this.order.products?.length) {
       this.dataSource = new MatTableDataSource(this.order.products);
       this.dataSource.sort = this.sort;

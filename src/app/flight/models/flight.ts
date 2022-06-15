@@ -1,5 +1,3 @@
-import {Airplane} from "./airplane";
-
 export interface Flight {
   regular?: boolean,
   iataCode?: string,

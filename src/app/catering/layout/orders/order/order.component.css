@@ -7,3 +7,9 @@ table {
   width: 100%;
 }
 
+.fixed {
+  flex: 0 0 250px;
+}
+.rubbery {
+  flex: 1 1 25%;
+}

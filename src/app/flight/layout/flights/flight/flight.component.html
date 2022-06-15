@@ -1,52 +1,57 @@
 <br>
 <div style="text-align: center" *ngIf="isDataLoadedFlight">
-  <button *ngxPermissionsOnly="['ROLE_MANAGER', 'ROLE_SYSTEM']" mat-flat-button color="primary" (click)="updateFlight()">Редактировать полёт</button>
-  <button mat-button (click)="refresh()"><mat-icon>refresh</mat-icon></button>
-<mat-grid-list cols="3" rowHeight="10rem" class="">
-  <mat-grid-tile
-    *ngIf="isDataLoadedFlight"
-    [colspan]="2"
-    [rowspan]="2">
-    рейс номер {{flight.flightNumber}}<br>
-    <div *ngIf="flight.regular===true; then regular else noRegular">
-    </div>
-    <ng-template #regular>
-      регулярный
-    </ng-template>
-    <ng-template #noRegular>
-      чартерный
-    </ng-template><br>
-    Цена билета {{flight.ticketPrice}}$<br>
-    Загруженность, чел: {{flight.passengersCount}}<br>
-    Дата вылета {{flight.departure | date:'short'}}<br>
-    Время в полёте {{flight.flightTime}}<br>
-    Статус полёта {{flight.status}}<br>
+  <button *ngxPermissionsOnly="['ROLE_MANAGER', 'ROLE_SYSTEM']" mat-flat-button color="primary"
+          (click)="updateFlight()">Редактировать полёт
+  </button>
+  <button mat-button (click)="refresh()">
+    <mat-icon>refresh</mat-icon>
+  </button>
+  <mat-grid-list cols="3" rowHeight="10rem" class="">
+    <mat-grid-tile
+      *ngIf="isDataLoadedFlight"
+      [colspan]="2"
+      [rowspan]="2">
+      рейс номер {{flight.flightNumber}}<br>
+      <div *ngIf="flight.regular===true; then regular else noRegular">
+      </div>
+      <ng-template #regular>
+        регулярный
+      </ng-template>
+      <ng-template #noRegular>
+        чартерный
+      </ng-template>
+      <br>
+      Цена билета {{flight.ticketPrice}}$<br>
+      Загруженность, чел: {{flight.passengersCount}}<br>
+      Дата вылета {{flight.departure | date:'short'}}<br>
+      Время в полёте {{flight.flightTime}}<br>
+      Статус полёта: {{flight.status}}<br>
 
-  </mat-grid-tile>
-  <mat-grid-tile
-    *ngIf="isDataLoadedAirportArr"
-    [colspan]="1"
-    [rowspan]="1">
-    ИКАО код: {{arrAirport.icaoCode}}<br>
-    Страна вылета: {{arrAirport.country}}<br>
-    Город вылета: {{arrAirport.city}}<br>
-  </mat-grid-tile>
-  <mat-grid-tile
-    *ngIf="isDataLoadedAirportDep"
-    [colspan]="1"
-    [rowspan]="1">
-    ИКАО код: {{depAirport.icaoCode}}<br>
-    Страна прибытия: {{depAirport.country}}<br>
-    Город прибытия: {{depAirport.city}}<br>
-  </mat-grid-tile>
-  <mat-grid-tile
-    *ngIf="isDataLoadedAirplane"
-    [colspan]="2"
-    [rowspan]="1">
-    Модель: {{airplane.model}}<br>
-    ИАТА код: {{airplane.iataCode}}<br>
-    Максимальная загруженнсоть {{airplane.loadCapacity}}<br>
-  </mat-grid-tile>
-</mat-grid-list>
-<mat-card id="err" *ngIf="errors != ''" [innerText]="errors"></mat-card>
+    </mat-grid-tile>
+    <mat-grid-tile
+      *ngIf="isDataLoadedAirportArr"
+      [colspan]="1"
+      [rowspan]="1">
+      ИКАО код: {{arrAirport.icaoCode}}<br>
+      Страна вылета: {{arrAirport.country}}<br>
+      Город вылета: {{arrAirport.city}}<br>
+    </mat-grid-tile>
+    <mat-grid-tile
+      *ngIf="isDataLoadedAirportDep"
+      [colspan]="1"
+      [rowspan]="1">
+      ИКАО код: {{depAirport.icaoCode}}<br>
+      Страна прибытия: {{depAirport.country}}<br>
+      Город прибытия: {{depAirport.city}}<br>
+    </mat-grid-tile>
+    <mat-grid-tile
+      *ngIf="isDataLoadedAirplane"
+      [colspan]="2"
+      [rowspan]="1">
+      Модель: {{airplane.model}}<br>
+      ИАТА код: {{airplane.iataCode}}<br>
+      Максимальная загруженнсоть {{airplane.loadCapacity}}<br>
+    </mat-grid-tile>
+  </mat-grid-list>
+  <mat-card id="err" *ngIf="errors != ''" [innerText]="errors"></mat-card>
 </div>
