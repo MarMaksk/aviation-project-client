@@ -9,8 +9,8 @@ import {ICRUD} from "./ICRUD";
 })
 export class FlightService implements ICRUD<Flight> {
 // URL для gateway
-  // API: string = 'http://localhost:8080/avia/order/flight/';
-  API: string = 'http://localhost:9001/flight/';
+  API: string = 'http://localhost:8080/avia/order/flight/';
+  // API: string = 'http://localhost:9001/flight/';
 
   constructor(private http: HttpClient) {
   }
