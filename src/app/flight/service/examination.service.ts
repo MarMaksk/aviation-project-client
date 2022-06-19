@@ -20,14 +20,14 @@ export class ExaminationService implements ICRUD<Examination> {
   API: string = 'http://localhost:9001/examination/';
 
   create(entity: Examination): Observable<Examination> {
-    return this.http.post<Examination>(this.API + 'create', entity)
+    return this.http.post<Examination>(this.API, entity)
   }
 
   delete(date: Date, iataCode: string): Observable<void> {
     let params = new HttpParams();
     params = params.append('iataCode', iataCode)
     params = params.append('date', date.toDateString())
-    return this.http.delete<void>(this.API + 'delete/', {
+    return this.http.delete<void>(this.API, {
       params
     });
   }
@@ -36,7 +36,7 @@ export class ExaminationService implements ICRUD<Examination> {
     let params = new HttpParams();
     params = params.append('iataCode', iataCode)
     params = params.append('date', date.toDateString())
-    return this.http.get<Examination>(this.API + 'get', {
+    return this.http.get<Examination>(this.API, {
       params
     });
   }
@@ -46,7 +46,7 @@ export class ExaminationService implements ICRUD<Examination> {
   }
 
   findAll(): Observable<Examination[]> {
-    return this.http.get<Examination[]>(this.API + 'getAll/');
+    return this.http.get<Examination[]>(this.API);
   }
 
   update(entity: Examination): Observable<Examination> {

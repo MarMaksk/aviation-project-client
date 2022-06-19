@@ -44,13 +44,10 @@ export class LoginComponent implements OnInit {
     }).subscribe(data => {
       this.tokeStorage.saveToken(data.token)
       this.tokeStorage.saveUser(data)
-      this.authService.loadRoles()
-        .subscribe(roles => {
-          this.tokeStorage.saveRoles(roles)
-          this.notificationService.showSnackBar("Successfully logged in")
-          this.router.navigate(['/main'])
-          window.location.reload();
-        })
+      this.tokeStorage.saveRoles(data.roles)
+      this.notificationService.showSnackBar("Successfully logged in")
+      this.router.navigate(['/main'])
+      window.location.reload();
     }, error => {
       console.log(error);
       this.notificationService.showSnackBar(error.message)

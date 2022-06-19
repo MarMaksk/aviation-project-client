@@ -17,27 +17,27 @@ export class AirportService implements ICRUD<Airport> {
   API: string = 'http://localhost:9001/airport/';
 
   findAllWithPagination(sort: string, direction: string, order: number, page: number): Observable<PageableEntity> {
-    return this.http.get<PageableEntity>(this.API + `getAll/${sort}/${order}/${page}/${direction}`);
+    return this.http.get<PageableEntity>(this.API + `/${sort}/${order}/${page}/${direction}`);
   }
 
   findAll(): Observable<Airport[]> {
-    return this.http.get<Airport[]>(this.API + 'getAll');
+    return this.http.get<Airport[]>(this.API);
   }
 
   create(entity: Airport): Observable<Airport> {
-    return this.http.post<Airport>(this.API + 'create', entity);
+    return this.http.post<Airport>(this.API, entity);
   }
 
   delete(iataCode: any): Observable<void> {
-    return this.delete(this.API + 'delete/');
+    return this.delete(this.API);
   }
 
   find(uniqueId: any): Observable<Airport> {
-    return this.http.get<Airport>(this.API + 'get/' + uniqueId);
+    return this.http.get<Airport>(this.API + uniqueId);
   }
 
   update(entity: Airport): Observable<Airport> {
-    return this.http.put<Airport>(this.API + 'update/', entity);
+    return this.http.put<Airport>(this.API, entity);
   }
 
 

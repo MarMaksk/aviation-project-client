@@ -16,22 +16,22 @@ export class OrderService implements ICRUD<Order> {
   API: string = 'http://localhost:9000/order/';
 
   findAllWithPagination(sort: string, direction: string, order: number, page: number): Observable<PageableEntity> {
-    return this.http.get<PageableEntity>(this.API + `getAll/${sort}/${order}/${page}/${direction}`);
+    return this.http.get<PageableEntity>(this.API + `${sort}/${order}/${page}/${direction}`);
   }
 
   create(entity: Order): Observable<Order> {
-    return this.http.post<Order>(this.API + 'create', entity);
+    return this.http.post<Order>(this.API, entity);
   }
 
   delete(iataCodeAndIcaoCode: any): Observable<void> {
-    return this.http.delete<void>(this.API + 'delete/' + iataCodeAndIcaoCode);
+    return this.http.delete<void>(this.API  + iataCodeAndIcaoCode);
   }
 
   find(productOrderId: number): Observable<Order> {
-    return this.http.get<Order>(this.API + 'get/' + productOrderId);
+    return this.http.get<Order>(this.API  + productOrderId);
   }
 
   update(entity: Order): Observable<Order> {
-    return this.http.put<Order>(this.API + 'update', entity);
+    return this.http.put<Order>(this.API, entity);
   }
 }

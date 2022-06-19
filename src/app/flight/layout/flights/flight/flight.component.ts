@@ -87,7 +87,7 @@ export class FlightComponent implements OnInit {
   }
 
   updateStatus() {
-    this.flightService.updateStatus(this.flight)
+    this.flightService.update(this.flight)
       .subscribe(()=> this.notificationService.showSnackBar(`Статус изменён на: ${this.flight.status}`))
   }
 

@@ -20,10 +20,6 @@ export class AuthService {
     })
   }
 
-  public loadRoles(): Observable<string[]> {
-    return this.http.get<string[]>(AUTH_API + 'loadRoles')
-  }
-
   public register(user: User): Observable<any> {
     return this.http.post(AUTH_API + 'signup', {
       username: user.username,

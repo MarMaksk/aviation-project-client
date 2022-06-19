@@ -16,31 +16,31 @@ export class ProductService implements ICRUD<Product> {
   API: string = 'http://localhost:9000/product/';
 
   findAll(): Observable<Product[]> {
-    return this.http.get<Product[]>(this.API + `getAll`);
+    return this.http.get<Product[]>(this.API);
   }
 
   findAllForOrder(icaoCode: string, iataCode: string): Observable<Product[]> {
-    return this.http.get<Product[]>(this.API + `getAll/${icaoCode}/${iataCode}`);
+    return this.http.get<Product[]>(this.API + `${icaoCode}/${iataCode}`);
   }
 
   findAllWithPagination(sort: string, direction: string, order: number, page: number): Observable<PageableEntity> {
-    return this.http.get<PageableEntity>(this.API + `getAll/${sort}/${order}/${page}/${direction}`);
+    return this.http.get<PageableEntity>(this.API + `${sort}/${order}/${page}/${direction}`);
   }
 
   create(entity: Product): Observable<Product> {
-    return this.http.post<Product>(this.API + 'create', entity);
+    return this.http.post<Product>(this.API, entity);
   }
 
   delete(code: any): Observable<void> {
-    return this.http.delete<void>(this.API + 'delete/' + code);
+    return this.http.delete<void>(this.API + code);
     ;
   }
 
   find(code: any): Observable<Product> {
-    return this.http.get<Product>(this.API + 'get/' + code);
+    return this.http.get<Product>(this.API + code);
   }
 
   update(entity: Product): Observable<Product> {
-    return this.http.put<Product>(this.API + 'update/', entity);
+    return this.http.put<Product>(this.API, entity);
   }
 }

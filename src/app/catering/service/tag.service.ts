@@ -14,7 +14,7 @@ export class TagService {
   }
 
   findAllTags(): Observable<Tag[]> {
-    return this.http.get<Tag[]>(this.API + 'getAll')
+    return this.http.get<Tag[]>(this.API)
   }
 
 }

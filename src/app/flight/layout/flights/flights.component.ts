@@ -88,17 +88,16 @@ export class FlightsComponent implements OnInit {
   }
 
   submitChangeStatus() {
-    this.flightService.updateStatus({
-      flightNumber: this.changeStatus,
-      status: this.newStatus
-    }).subscribe(()=> this.notificationService.showSnackBar('Статус обновлён'),
+    let flight = this.flights.find((x: { flightNumber: string; }) => x.flightNumber == this.changeStatus)
+    flight.status = this.newStatus
+    this.flightService.update(flight).subscribe(() => this.notificationService.showSnackBar('Статус обновлён'),
       error => this.notificationService.showSnackBar('Ошибка'))
     this.changeStatus = ''
   }
 
   delete(flightNumber: string) {
     this.flightService.delete(flightNumber).subscribe(() =>
-      this.notificationService.showSnackBar("Успешно удалено"),
+        this.notificationService.showSnackBar("Успешно удалено"),
       error => this.notificationService.showSnackBar("Ошибка"))
   }
 }

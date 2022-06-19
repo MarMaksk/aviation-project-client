@@ -13,12 +13,8 @@ export class UtilService {
   constructor(private http: HttpClient) {
   }
 
-  findAllStatus(): Observable<String[]> {
-    return this.http.get<String[]>(UTIL_API + 'getAllFlightStatus')
-  }
-
   checkStatus(productOrderId: string): Observable<String> {
-    return this.http.get<String>(UTIL_API + 'checkDelivery/' + productOrderId)
+    return this.http.get<String>(UTIL_API + productOrderId)
   }
 
 }

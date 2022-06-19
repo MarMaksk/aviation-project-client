@@ -44,10 +44,9 @@ export class CheckDeliveryComponent implements OnInit {
   }
 
   submit() {
-    this.flightService.updateStatus({
-      flightNumber: this.data.flight.flightNumber,
-      status: this.deliveryForm.value.status
-    })
+    let flight = this.data.flight
+    flight.status = this.deliveryForm.value.status
+    this.flightService.update(flight)
       .subscribe(() => {
         this.notification.showSnackBar("Полёт обновлён")
         this.dialogRef.close()
