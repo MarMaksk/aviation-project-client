@@ -3,13 +3,18 @@
   <form [formGroup]="profileEditForm">
     <mat-form-field class="w-100" appearance="outline">
       <mat-label>Имя</mat-label>
-      <input matInput
+      <input matInput type="text"
              formControlName="firstname">
     </mat-form-field>
     <mat-form-field class="w-100" appearance="outline">
       <mat-label>Фамилия</mat-label>
-      <input matInput
+      <input matInput type="text"
              formControlName="lastname">
+    </mat-form-field>
+    <mat-form-field class="w-100" appearance="outline">
+      <mat-label>Электронная почта</mat-label>
+      <input matInput type="email"
+             formControlName="email">
     </mat-form-field>
     <mat-form-field class="w-100" appearance="outline">
       <mat-label>Биография</mat-label>

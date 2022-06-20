@@ -29,7 +29,8 @@ export class EditUserComponent implements OnInit {
     return this.fb.group({
         firstname: [this.data.user.firstname, Validators.compose([Validators.required])],
         lastname: [this.data.user.lastname, Validators.compose([Validators.required])],
-        bio: [this.data.user.bio, Validators.compose([Validators.required])]
+        bio: [this.data.user.bio, Validators.compose([Validators.required])],
+        email: [this.data.user.email, Validators.compose([Validators.email])]
       }
     )
   }
@@ -46,6 +47,7 @@ export class EditUserComponent implements OnInit {
     this.data.user.firstname = this.profileEditForm.value.firstname;
     this.data.user.lastname = this.profileEditForm.value.lastname;
     this.data.user.bio = this.profileEditForm.value.bio;
+    this.data.user.email = this.profileEditForm.value.email;
     return this.data.user;
   }
 
