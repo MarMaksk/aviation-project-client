@@ -1,0 +1,27 @@
+<div>
+  <h2>Получить отчёт по заявке</h2>
+  <form [formGroup]="reportForm">
+
+    <mat-form-field class="w-100" appearance="outline">
+      <mat-label>ФИО ответственного за доставку</mat-label>
+      <input type="text" matInput formControlName="responsible">
+    </mat-form-field>
+
+    <mat-form-field class="w-100" appearance="outline">
+      <mat-label>email адрес ответственного за доставку</mat-label>
+      <input type="email" matInput formControlName="email">
+    </mat-form-field>
+
+    <br>
+    <div class="row">
+      <button (click)="closeDialog()" class="w-50"
+              mat-button mat-dialog-close disableRipple>
+        Закрыть
+      </button>
+      <button color="primary" class="w-50" [disabled]="reportForm.invalid" (click)="submit()" mat-button
+              disableRipple>
+        Получить
+      </button>
+    </div>
+  </form>
+</div>

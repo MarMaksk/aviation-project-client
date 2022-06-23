@@ -11,6 +11,8 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
 import {MatChipsModule} from "@angular/material/chips";
 import { ProductsComponent } from './layout/products/products.component';
 import { AddProductsComponent } from './layout/products/add-products/add-products.component';
+import { ReportComponent } from './layout/orders/order/report/report.component';
+import {PdfViewerModule} from "ng2-pdf-viewer";
 
 
 @NgModule({
@@ -21,14 +23,16 @@ import { AddProductsComponent } from './layout/products/add-products/add-product
     OrderComponent,
     AddProductsToOrderComponent,
     ProductsComponent,
-    AddProductsComponent
+    AddProductsComponent,
+    ReportComponent
   ],
   imports: [
     CommonModule,
     MaterialModule,
     AppRoutingModule,
     MatCheckboxModule,
-    MatChipsModule
+    MatChipsModule,
+    PdfViewerModule
   ],
   exports: [CateringComponent]
 })

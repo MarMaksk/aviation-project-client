@@ -13,6 +13,8 @@ import {AddExaminationComponent} from "../../../../flight/layout/airplans/add-ex
 import {AddProductsToOrderComponent} from "./add-products-to-order/add-products-to-order.component";
 import {SelectionModel} from "@angular/cdk/collections";
 import {UpdateOrderComponent} from "./update-order/update-order.component";
+import {ReportComponent} from "./report/report.component";
+import {ReportService} from "../../../service/report.service";
 
 @Component({
   selector: 'app-order',
@@ -33,7 +35,8 @@ export class OrderComponent implements OnInit {
   constructor(private orderService: OrderService,
               private route: ActivatedRoute,
               private dialog: MatDialog,
-              private notification: NotificationService) {
+              private notification: NotificationService,
+              private reportService: ReportService) {
   }
 
   ngOnInit(): void {
@@ -90,6 +93,25 @@ export class OrderComponent implements OnInit {
       order: this.order
     }
     this.dialog.open(AddProductsToOrderComponent, dialogConfig)
+  }
+
+  showInvoice() {
+    this.reportService.deliverInvoice(this.order.productOrderId)
+      .subscribe(data => {
+        var fileURL = URL.createObjectURL(data);
+        window.open(fileURL);
+      }, error => {
+        console.log(error)
+      })
+  }
+
+  showReport() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.width = '1000px'
+    dialogConfig.data = {
+      order: this.order
+    }
+    this.dialog.open(ReportComponent, dialogConfig)
   }
 
   masterToggle() {
