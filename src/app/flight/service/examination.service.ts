@@ -10,14 +10,14 @@ import {PageableEntity} from "../../user/models/pageableEntity";
 })
 export class ExaminationService implements ICRUD<Examination> {
 
+  API: string = 'http://localhost:9001/examination/';
+
   constructor(private http: HttpClient) {
   }
 
   findAllWithPagination(sort: string, direction: string, order: number, page: number): Observable<PageableEntity> {
-    return this.http.get<PageableEntity>(this.API + `getAll/${sort}/${order}/${page}/${direction}`);
+    return this.http.get<PageableEntity>(this.API + `${sort}/${order}/${page}/${direction}`);
   }
-
-  API: string = 'http://localhost:9001/examination/';
 
   create(entity: Examination): Observable<Examination> {
     return this.http.post<Examination>(this.API, entity)
