@@ -12,7 +12,7 @@ import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 export class AlternativeFlightsComponent implements OnInit {
 
   choose: Flight | any;
-  flights: Flight[] | any;
+  flights: Flight[] = [];
 
   constructor(private flightService: FlightService,
               private notification: NotificationService,

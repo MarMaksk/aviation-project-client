@@ -1,6 +1,3 @@
-import {DeliveryStatus} from "./enums/delivery-status";
-import {enumValues} from "./enum-values";
-
 export function enumCompare(val: string): string | any {
   switch (val) {
     case "CREATED":

@@ -1,13 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {Order} from "../../models/order";
-import {OrderService} from "../../service/order.service";
 import {NotificationService} from "../../../user/service/notification.service";
 import {PageEvent} from "@angular/material/paginator";
 import {MatSort} from "@angular/material/sort";
 import {Product} from "../../models/product";
 import {ProductService} from "../../service/product.service";
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
-import {AddProductsToOrderComponent} from "../orders/order/add-products-to-order/add-products-to-order.component";
 import {AddProductsComponent} from "./add-products/add-products.component";
 
 @Component({

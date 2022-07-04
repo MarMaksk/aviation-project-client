@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {ICRUD} from "./ICRUD";
 import {Airplane} from "../models/airplane";
-import {Observable, Observer} from "rxjs";
+import {Observable} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 import {PageableEntity} from "../../user/models/pageableEntity";
 

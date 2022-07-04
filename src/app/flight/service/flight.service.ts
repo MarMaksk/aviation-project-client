@@ -9,18 +9,18 @@ import {ICRUD} from "./ICRUD";
 })
 export class FlightService implements ICRUD<Flight> {
 // URL для gateway
-  API: string = 'http://localhost:8080/avia/order/flight';
-//   API: string = 'http://localhost:9001/flight/';
+//   API: string = 'http://localhost:8080/avia/order/flight/';
+  API: string = 'http://localhost:9001/flight/';
 
   constructor(private http: HttpClient) {
   }
 
   selectAlternativeFlight(flightNumber: string, flightNumberAlternative: string): Observable<void> {
-    return this.http.get<void>(this.API + '/alternativeFlight/' + flightNumber + '/' + flightNumberAlternative);
+    return this.http.get<void>(this.API + 'alternativeFlight/' + flightNumber + '/' + flightNumberAlternative);
   }
 
   findAlternativeFlights(flightNumber: string): Observable<Flight[]> {
-    return this.http.get<Flight[]>(this.API + '/alternativeFlights/' + flightNumber)
+    return this.http.get<Flight[]>(this.API + 'alternativeFlights/' + flightNumber)
   }
 
   create(entity: Flight): Observable<Flight> {

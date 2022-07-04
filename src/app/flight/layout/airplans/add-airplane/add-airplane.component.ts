@@ -33,7 +33,6 @@ export class AddAirplaneComponent implements OnInit {
   }
 
   submit(): void {
-    console.log(this.addForm.value)
     this.airplaneService.create({
       model: this.addForm.value.model,
       iataCode: this.addForm.value.iataCode,

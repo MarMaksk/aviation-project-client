@@ -9,9 +9,9 @@ import {AppRoutingModule} from "../app-routing.module";
 import {AddProductsToOrderComponent} from './layout/orders/order/add-products-to-order/add-products-to-order.component';
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import {MatChipsModule} from "@angular/material/chips";
-import { ProductsComponent } from './layout/products/products.component';
-import { AddProductsComponent } from './layout/products/add-products/add-products.component';
-import { ReportComponent } from './layout/orders/order/report/report.component';
+import {ProductsComponent} from './layout/products/products.component';
+import {AddProductsComponent} from './layout/products/add-products/add-products.component';
+import {ReportComponent} from './layout/orders/order/report/report.component';
 import {PdfViewerModule} from "ng2-pdf-viewer";
 
 

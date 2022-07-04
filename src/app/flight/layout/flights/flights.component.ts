@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Flight} from "../../models/flight";
 import {User} from "../../../user/models/user";
 import {FlightService} from "../../service/flight.service";
@@ -9,8 +9,6 @@ import {AirplaneService} from "../../service/airplane.service";
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
 import {AddFlightComponent} from "./add-flight/add-flight.component";
 import {CheckDeliveryComponent} from "./check-delivery/check-delivery.component";
-import {NgxPermissionsService} from "ngx-permissions";
-import {TokenStorageService} from "../../../user/service/token-storage.service";
 import {FlightStatus} from "../../models/enums/flight-status";
 import {enumValues} from 'src/app/util/enum-values';
 import {AlternativeFlightsComponent} from "./alternative-flights/alternative-flights.component";

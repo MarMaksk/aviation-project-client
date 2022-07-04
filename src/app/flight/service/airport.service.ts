@@ -3,7 +3,6 @@ import {ICRUD} from "./ICRUD";
 import {Airport} from "../models/airport";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {Airplane} from "../models/airplane";
 import {PageableEntity} from "../../user/models/pageableEntity";
 
 @Injectable({

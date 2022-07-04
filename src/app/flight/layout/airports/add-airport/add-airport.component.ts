@@ -2,8 +2,6 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {NotificationService} from "../../../../user/service/notification.service";
-import {ExaminationService} from "../../../service/examination.service";
-import {Airport} from "../../../models/airport";
 import {AirportService} from "../../../service/airport.service";
 
 @Component({

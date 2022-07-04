@@ -1,12 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {NotificationService} from "../../../user/service/notification.service";
-import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
 import {PageEvent} from "@angular/material/paginator";
 import {MatSort} from "@angular/material/sort";
-import {AddAirportComponent} from "../../../flight/layout/airports/add-airport/add-airport.component";
 import {Order} from "../../models/order";
 import {OrderService} from "../../service/order.service";
-import {Flight} from "../../../flight/models/flight";
 
 @Component({
   selector: 'app-orders',

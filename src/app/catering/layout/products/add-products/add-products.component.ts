@@ -1,9 +1,7 @@
-import {Component, ElementRef, OnInit, TrackByFunction, ViewChild} from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {MatDialogRef} from "@angular/material/dialog";
 import {NotificationService} from "../../../../user/service/notification.service";
-
-;
 import {ProductService} from "../../../service/product.service";
 import {TagService} from "../../../service/tag.service";
 import {Tag} from "../../../models/tag";
@@ -11,6 +9,8 @@ import {map, Observable, startWith} from 'rxjs';
 import {COMMA, ENTER} from "@angular/cdk/keycodes";
 import {MatAutocompleteSelectedEvent} from "@angular/material/autocomplete";
 import {MatChipInputEvent} from "@angular/material/chips";
+
+;
 
 @Component({
   selector: 'app-add-products',

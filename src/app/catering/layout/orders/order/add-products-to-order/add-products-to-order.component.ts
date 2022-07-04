@@ -1,11 +1,10 @@
 import {Component, Inject, OnInit, ViewChild} from '@angular/core';
-import {Order} from "../../../../models/order";
 import {MatTableDataSource} from "@angular/material/table";
 import {Product} from "../../../../models/product";
 import {MatSort} from "@angular/material/sort";
 import {OrderService} from "../../../../service/order.service";
 import {ProductService} from "../../../../service/product.service";
-import {ActivatedRoute, Params} from "@angular/router";
+import {ActivatedRoute} from "@angular/router";
 import {NotificationService} from "../../../../../user/service/notification.service";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {SelectionModel} from "@angular/cdk/collections";

@@ -1,5 +1,4 @@
-import {Observable, Observer} from "rxjs";
-import {HttpClient} from "@angular/common/http";
+import {Observable} from "rxjs";
 
 export interface ICRUD<F> {
 

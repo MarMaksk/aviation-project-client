@@ -1,8 +1,10 @@
 <br>
 <div style="text-align: center" *ngIf="isDataLoadedFlight">
-  <button *ngxPermissionsOnly="['ROLE_MANAGER', 'ROLE_SYSTEM']" mat-flat-button color="primary"
-          (click)="updateFlight()">Редактировать полёт
-  </button>
+  <p *ngIf="flight.status=='Создан' || flight.status=='Готов к вылету'">
+    <button *ngxPermissionsOnly="['ROLE_MANAGER', 'ROLE_SYSTEM']" mat-flat-button color="primary"
+            (click)="updateFlight()">Редактировать полёт
+    </button>
+  </p>
   <button mat-button (click)="refresh()">
     <mat-icon>refresh</mat-icon>
   </button>

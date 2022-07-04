@@ -1,6 +1,6 @@
-import {Component, Inject, OnInit} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
-import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {MatDialogRef} from "@angular/material/dialog";
 import {NotificationService} from "../../../../user/service/notification.service";
 import {FlightService} from "../../../service/flight.service";
 import {AirplaneService} from "../../../service/airplane.service";
@@ -65,7 +65,6 @@ export class AddFlightComponent implements OnInit {
   }
 
   submit(): void {
-    console.log(this.addForm.value)
     this.flightService.create({
       regular: this.addForm.value.regular,
       iataCode: this.addForm.value.iataCode,

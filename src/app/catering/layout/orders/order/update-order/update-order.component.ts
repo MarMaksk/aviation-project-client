@@ -1,11 +1,8 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
-import {ProductService} from "../../../../service/product.service";
 import {OrderService} from "../../../../service/order.service";
-import {ActivatedRoute} from "@angular/router";
 import {NotificationService} from "../../../../../user/service/notification.service";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {FlightStatus} from "../../../../../flight/models/enums/flight-status";
 import {enumValues} from 'src/app/util/enum-values';
 import {DeliveryStatus} from "../../../../../util/enums/delivery-status";
 import {enumCompare} from "../../../../../util/enum-compare";

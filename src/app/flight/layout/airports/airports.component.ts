@@ -1,17 +1,11 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {NotificationService} from "../../../user/service/notification.service";
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
 import {Airport} from "../../models/airport";
 import {AirportService} from "../../service/airport.service";
 import {AddAirportComponent} from "./add-airport/add-airport.component";
-import {MatTableDataSource} from "@angular/material/table";
-import {MatPaginator, PageEvent} from "@angular/material/paginator";
-import {MatSort, Sort} from "@angular/material/sort";
-import {BehaviorSubject, combineLatest, map, Observable, switchMap} from "rxjs";
-import {AirplaneService} from "../../service/airplane.service";
-import {HttpClient} from "@angular/common/http";
-import {catchError} from "rxjs/operators";
-import {FormControl, FormGroup} from "@angular/forms";
+import {PageEvent} from "@angular/material/paginator";
+import {MatSort} from "@angular/material/sort";
 
 @Component({
   selector: 'app-airports',
@@ -63,7 +57,6 @@ export class AirportsComponent implements OnInit {
     this.airports = [];
     this.airportService.findAllWithPagination(this.currentSort.active, this.currentSort.direction, size, page)
       .subscribe(data => {
-        console.log(data)
         this.totalCount = data.totalElements
         this.airports = data.content;
         this.isDataLoaded = true;

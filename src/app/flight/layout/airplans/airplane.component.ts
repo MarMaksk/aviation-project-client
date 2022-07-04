@@ -1,15 +1,11 @@
-import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {NotificationService} from "../../../user/service/notification.service";
 import {AirplaneService} from "../../service/airplane.service";
-import {ExaminationService} from "../../service/examination.service";
 import {Airplane} from "../../models/airplane";
-import {Examination} from "../../models/examination";
 import {animate, state, style, transition, trigger} from "@angular/animations";
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
-import {CheckDeliveryComponent} from "../flights/check-delivery/check-delivery.component";
 import {AddAirplaneComponent} from "./add-airplane/add-airplane.component";
-import {MatTableDataSource} from "@angular/material/table";
-import {MatPaginator, PageEvent} from "@angular/material/paginator";
+import {PageEvent} from "@angular/material/paginator";
 import {MatSort} from "@angular/material/sort";
 import {AddExaminationComponent} from "./add-examination/add-examination.component";
 import {TokenStorageService} from "../../../user/service/token-storage.service";
@@ -48,7 +44,6 @@ export class AirplaneComponent implements OnInit {
   ngOnInit(): void {
     if (this.storage.getRoles().indexOf("ROLE_MAINTENANCE") != -1 ||
       this.storage.getRoles().indexOf("ROLE_SYSTEM") != -1) {
-      console.log("true")
       this.displayedColumns = ['iataCode', 'model', 'loadCapacity', 'examination'];
     } else
       this.displayedColumns = ['iataCode', 'model', 'loadCapacity'];

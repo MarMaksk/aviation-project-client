@@ -1,12 +1,9 @@
-import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {NotificationService} from "../../../user/service/notification.service";
 import {ExaminationService} from "../../service/examination.service";
 import {Examination} from "../../models/examination";
-import {MatTableDataSource} from "@angular/material/table";
-import {MatPaginator, PageEvent} from "@angular/material/paginator";
+import {PageEvent} from "@angular/material/paginator";
 import {MatSort} from "@angular/material/sort";
-import {AirplaneService} from "../../service/airplane.service";
-import {MatDialog} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-examinations',
@@ -49,7 +46,6 @@ export class ExaminationsComponent implements OnInit{
     this.examinations = [];
     this.examinationService.findAllWithPagination(this.currentSort.active, this.currentSort.direction, size, page)
       .subscribe(data => {
-        console.log(data)
         this.totalCount = data.totalElements
         this.examinations = data.content;
         this.isDataLoaded = true;

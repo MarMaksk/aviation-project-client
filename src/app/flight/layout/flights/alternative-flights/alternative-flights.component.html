@@ -1,4 +1,4 @@
-<div *ngIf="flights.length == 0; else alternative_flights">Альтернативных рейсов не найдено</div>
+<div *ngIf="!flights?.length; else alternative_flights">Альтернативных рейсов не найдено</div>
 <ng-template #alternative_flights>
   <label id="radio-group-label">Выберите альтернативный рейс:</label>
   <br>

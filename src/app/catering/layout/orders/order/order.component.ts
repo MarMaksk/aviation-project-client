@@ -1,15 +1,12 @@
-import {AfterContentInit, Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {Order} from "../../../models/order";
-import {Airplane} from "../../../../flight/models/airplane";
-import {MatTable, MatTableDataSource} from "@angular/material/table";
+import {MatTableDataSource} from "@angular/material/table";
 import {MatSort} from "@angular/material/sort";
 import {Product} from "../../../models/product";
-import {ProductService} from "../../../service/product.service";
 import {ActivatedRoute, Params} from "@angular/router";
 import {OrderService} from "../../../service/order.service";
 import {NotificationService} from "../../../../user/service/notification.service";
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
-import {AddExaminationComponent} from "../../../../flight/layout/airplans/add-examination/add-examination.component";
 import {AddProductsToOrderComponent} from "./add-products-to-order/add-products-to-order.component";
 import {SelectionModel} from "@angular/cdk/collections";
 import {UpdateOrderComponent} from "./update-order/update-order.component";
