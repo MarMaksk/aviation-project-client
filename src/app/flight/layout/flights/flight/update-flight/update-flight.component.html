@@ -3,9 +3,9 @@
   <form [formGroup]="updateForm">
     <mat-form-field class="w-100" appearance="outline">
       <mat-label>Самолёт</mat-label>
-      <mat-select formControlName="iataCode">
+      <mat-select formControlName="icaoCode">
         <p *ngIf="isDataLoadedAirplane">
-          <mat-option *ngFor="let air of airplane" [value]="air.iataCode">{{air.model}}
+          <mat-option *ngFor="let air of airplane" [value]="air.icaoCode">{{air.model}}
             мест {{air.loadCapacity}} </mat-option>
         </p>
       </mat-select>
@@ -36,19 +36,19 @@
     </mat-form-field>
     <mat-form-field class="w-100" appearance="outline">
       <mat-label>Аэропорт вылета</mat-label>
-      <mat-select formControlName="icaoCodeDeparture">
+      <mat-select formControlName="iataCodeDeparture">
         <mat-option>None</mat-option>
         <p *ngIf="isDataLoadedAirplane">
-          <mat-option *ngFor="let air of airport" [value]="air.icaoCode">{{air.country}}, {{air.city}} </mat-option>
+          <mat-option *ngFor="let air of airport" [value]="air.iataCode">{{air.country}}, {{air.city}} </mat-option>
         </p>
       </mat-select>
     </mat-form-field>
     <mat-form-field class="w-100" appearance="outline">
       <mat-label>Аэропорт прибытия</mat-label>
-      <mat-select formControlName="icaoCodeArrival">
+      <mat-select formControlName="iataCodeArrival">
         <mat-option>None</mat-option>
         <p *ngIf="isDataLoadedAirplane">
-          <mat-option *ngFor="let air of airport" [value]="air.icaoCode">{{air.country}}, {{air.city}} </mat-option>
+          <mat-option *ngFor="let air of airport" [value]="air.iataCode">{{air.country}}, {{air.city}} </mat-option>
         </p>
       </mat-select>
     </mat-form-field>

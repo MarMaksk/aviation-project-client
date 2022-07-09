@@ -26,7 +26,7 @@ export class AddAirportComponent implements OnInit {
 
   createAddForm(): FormGroup {
     return this.fb.group({
-        icaoCode: ['', Validators.compose([Validators.required])],
+        iataCode: ['', Validators.compose([Validators.required])],
         country: ['', Validators.compose([Validators.required])],
         city: ['', Validators.compose([Validators.required])]
       }
@@ -35,7 +35,7 @@ export class AddAirportComponent implements OnInit {
 
   submit(): void {
     this.airportService.create({
-      icaoCode: this.addForm.value.icaoCode,
+      iataCode: this.addForm.value.iataCode,
       country: this.addForm.value.country,
       city: this.addForm.value.city
     })

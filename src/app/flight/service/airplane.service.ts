@@ -31,12 +31,12 @@ export class AirplaneService implements ICRUD<Airplane> {
     return this.http.post<Airplane>(this.API, entity);
   }
 
-  delete(iataCode: any): Observable<void> {
-    return this.http.delete<void>(this.API + iataCode);
+  delete(icaoCode: any): Observable<void> {
+    return this.http.delete<void>(this.API + icaoCode);
   }
 
-  find(iataCode: any): Observable<Airplane> {
-    return this.http.get<Airplane>(this.API + iataCode);
+  find(icaoCode: any): Observable<Airplane> {
+    return this.http.get<Airplane>(this.API + icaoCode);
   }
 
   update(entity: Airplane): Observable<Airplane> {
@@ -44,7 +44,7 @@ export class AirplaneService implements ICRUD<Airplane> {
   }
 
   equalsByIata(o1: Airplane, o2: Airplane): boolean {
-    return o1.iataCode === o2.iataCode;
+    return o1.icaoCode === o2.icaoCode;
   }
 
 }

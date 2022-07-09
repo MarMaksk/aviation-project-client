@@ -44,9 +44,9 @@ export class AirplaneComponent implements OnInit {
   ngOnInit(): void {
     if (this.storage.getRoles().indexOf("ROLE_MAINTENANCE") != -1 ||
       this.storage.getRoles().indexOf("ROLE_SYSTEM") != -1) {
-      this.displayedColumns = ['iataCode', 'model', 'loadCapacity', 'examination'];
+      this.displayedColumns = ['icaoCode', 'model', 'loadCapacity', 'examination'];
     } else
-      this.displayedColumns = ['iataCode', 'model', 'loadCapacity'];
+      this.displayedColumns = ['icaoCode', 'model', 'loadCapacity'];
     this.refresh()
   }
 

@@ -28,7 +28,7 @@ export class AirportService implements ICRUD<Airport> {
   }
 
   delete(iataCode: any): Observable<void> {
-    return this.delete(this.API);
+    return this.delete(this.API + iataCode);
   }
 
   find(uniqueId: any): Observable<Airport> {

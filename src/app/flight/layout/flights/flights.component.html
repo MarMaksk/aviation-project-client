@@ -40,11 +40,11 @@
         </mat-card-subtitle>
         <mat-card-content>
           Информация о самолёте <br>
-          иата код самолёта: {{flight.iataCode}}<br>
+          иата код самолёта: {{flight.icaoCode}}<br>
           загруженность, чел: {{flight.passengersCount}}<br>
           Информация о рейсе <br>
-          Вылет из аэропорта {{flight.icaoCodeArrival}}<br>
-          Прилёт в аэропорт {{flight.icaoCodeDeparture}}<br>
+          Вылет из аэропорта {{flight.iataCodeArrival}}<br>
+          Прилёт в аэропорт {{flight.iataCodeDeparture}}<br>
           Цена билета {{flight.ticketPrice}}$<br>
           Дата вылета {{flight.departure | date:'short'}}<br>
           Время в полёте {{flight.flightTime}}<br>

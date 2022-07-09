@@ -53,13 +53,13 @@ export class AddFlightComponent implements OnInit {
   createAddForm(): FormGroup {
     return this.fb.group({
         regular: ['', Validators.compose([Validators.required])],
-        iataCode: ['', Validators.compose([Validators.required, Validators.maxLength(3)])],
+        icaoCode: ['', Validators.compose([Validators.required, Validators.maxLength(3)])],
         departure: ['', Validators.compose([Validators.required])],
         flightTime: ['', Validators.compose([Validators.required])],
         passengersCount: ['', Validators.compose([Validators.required])],
         ticketPrice: ['', Validators.compose([Validators.required])],
-        icaoCodeDeparture: ['', Validators.compose([Validators.required, Validators.maxLength(4)])],
-        icaoCodeArrival: ['', Validators.compose([Validators.required, Validators.maxLength(4)])],
+        iataCodeDeparture: ['', Validators.compose([Validators.required, Validators.maxLength(4)])],
+        iataCodeArrival: ['', Validators.compose([Validators.required, Validators.maxLength(4)])],
       }
     )
   }
@@ -67,14 +67,14 @@ export class AddFlightComponent implements OnInit {
   submit(): void {
     this.flightService.create({
       regular: this.addForm.value.regular,
-      iataCode: this.addForm.value.iataCode,
+      icaoCode: this.addForm.value.icaoCode,
       flightNumber: this.addForm.value.iataCode + this.addForm.value.icaoCodeArrival,
       departure: this.addForm.value.departure,
       flightTime: this.addForm.value.flightTime,
       passengersCount: this.addForm.value.passengersCount,
       ticketPrice: this.addForm.value.ticketPrice,
-      icaoCodeDeparture: this.addForm.value.icaoCodeDeparture,
-      icaoCodeArrival: this.addForm.value.icaoCodeArrival
+      iataCodeDeparture: this.addForm.value.iataCodeDeparture,
+      iataCodeArrival: this.addForm.value.iataCodeArrival
     })
       .subscribe(() => {
         this.notification.showSnackBar("Полёт создан")

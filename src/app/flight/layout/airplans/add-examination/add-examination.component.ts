@@ -35,7 +35,7 @@ export class AddExaminationComponent implements OnInit {
   submit(): void {
     this.examinationService.create({
       description: this.addForm.value.description,
-      iataCode: this.data.airplane.iataCode
+      icaoCode: this.data.airplane.icaoCode
     })
       .subscribe(() => {
         this.notification.showSnackBar("Добавлено")

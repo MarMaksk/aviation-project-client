@@ -34,7 +34,7 @@
       *ngIf="isDataLoadedAirportArr"
       [colspan]="1"
       [rowspan]="1">
-      ИКАО код: {{arrAirport.icaoCode}}<br>
+      IATA код: {{arrAirport.iataCode}}<br>
       Страна вылета: {{arrAirport.country}}<br>
       Город вылета: {{arrAirport.city}}<br>
     </mat-grid-tile>
@@ -42,7 +42,7 @@
       *ngIf="isDataLoadedAirportDep"
       [colspan]="1"
       [rowspan]="1">
-      ИКАО код: {{depAirport.icaoCode}}<br>
+      IATA код: {{depAirport.iataCode}}<br>
       Страна прибытия: {{depAirport.country}}<br>
       Город прибытия: {{depAirport.city}}<br>
     </mat-grid-tile>
@@ -51,7 +51,7 @@
       [colspan]="2"
       [rowspan]="1">
       Модель: {{airplane.model}}<br>
-      ИАТА код: {{airplane.iataCode}}<br>
+      ICAO код: {{airplane.icaoCode}}<br>
       Максимальная загруженнсоть {{airplane.loadCapacity}}<br>
     </mat-grid-tile>
   </mat-grid-list>

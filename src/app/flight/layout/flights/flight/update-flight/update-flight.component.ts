@@ -63,13 +63,13 @@ export class UpdateFlightComponent implements OnInit {
 
   createUpdateForm(): FormGroup {
     return this.fb.group({
-        iataCode: [this.data.flight.iataCode, Validators.compose([Validators.required])],
+        icaoCode: [this.data.flight.icaoCode, Validators.compose([Validators.required])],
         departure: [this.data.flight.departure, Validators.compose([Validators.required])],
         flightTime: [this.data.flight.flightTime, Validators.compose([Validators.required])],
         passengersCount: [this.data.flight.passengersCount, Validators.compose([Validators.required])],
         ticketPrice: [this.data.flight.ticketPrice, Validators.compose([Validators.required])],
-        icaoCodeDeparture: [this.data.flight.icaoCodeDeparture, Validators.compose([Validators.required])],
-        icaoCodeArrival: [this.data.flight.icaoCodeArrival, Validators.compose([Validators.required])],
+        iataCodeDeparture: [this.data.flight.iataCodeDeparture, Validators.compose([Validators.required])],
+        iataCodeArrival: [this.data.flight.iataCodeArrival, Validators.compose([Validators.required])],
         status: [this.data.flight.status, Validators.compose([Validators.required])]
       }
     )
@@ -77,14 +77,14 @@ export class UpdateFlightComponent implements OnInit {
 
   submit(): void {
     this.flightService.update({
-      iataCode: this.updateForm.value.iataCode,
+      icaoCode: this.updateForm.value.icaoCode,
       flightNumber: this.data.flight.flightNumber,
       departure: this.updateForm.value.departure,
       flightTime: this.updateForm.value.flightTime,
       passengersCount: this.updateForm.value.passengersCount,
       ticketPrice: this.updateForm.value.ticketPrice,
-      icaoCodeDeparture: this.updateForm.value.icaoCodeDeparture,
-      icaoCodeArrival: this.updateForm.value.icaoCodeArrival,
+      iataCodeDeparture: this.updateForm.value.iataCodeDeparture,
+      iataCodeArrival: this.updateForm.value.iataCodeArrival,
       status: this.updateForm.value.status
     })
       .subscribe(() => {

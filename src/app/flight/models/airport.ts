@@ -1,5 +1,5 @@
 export interface Airport {
-  icaoCode: string,
+  iataCode: string,
   country: string,
   city: string
 }

@@ -41,6 +41,7 @@ export class FlightComponent implements OnInit {
   }
 
   checkStatus() {
+    console.log(this.flight.departure)
     let date = new Date(this.flight.departure)
     let arr = this.flight.flightTime.split(':')
     date.setHours(date.getHours() + parseInt(arr[0]), date.getMinutes() + parseInt(arr[1]))
@@ -64,19 +65,19 @@ export class FlightComponent implements OnInit {
           this.flight = data
           this.isDataLoadedFlight = true
           this.checkStatus()
-          this.airplaneService.find(data.iataCode)
+          this.airplaneService.find(data.icaoCode)
             .subscribe(data => {
               this.airplane = data
               this.isDataLoadedAirplane = true;
             }, error =>
               this.errors = this.errors + 'Информация о самолёте не загружена.\n')
-          this.arrAirport = this.airportService.find(data.icaoCodeArrival)
+          this.arrAirport = this.airportService.find(data.iataCodeArrival)
             .subscribe(data => {
               this.arrAirport = data
               this.isDataLoadedAirportArr = true;
             }, error =>
               this.errors = this.errors + 'Информация об аэропорте прибытия не загружена.\n')
-          this.depAirport = this.airportService.find(data.icaoCodeDeparture).subscribe(data => {
+          this.depAirport = this.airportService.find(data.iataCodeDeparture).subscribe(data => {
             this.depAirport = data
             this.isDataLoadedAirportDep = true;
           }, error =>

@@ -1,5 +1,5 @@
 export interface Airplane {
   model: string,
-  iataCode: string,
+  icaoCode: string,
   loadCapacity: number
 }

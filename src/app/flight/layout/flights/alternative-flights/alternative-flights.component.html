@@ -26,11 +26,11 @@
       </mat-card-subtitle>
       <mat-card-content>
         <h3>Информация о самолёте</h3>
-        иата код самолёта: {{choose.iataCode}}<br>
+        иата код самолёта: {{choose.icaoCode}}<br>
         загруженность, чел: {{choose.passengersCount}}<br>
         <h3>Информация о рейсе</h3>
-        Вылет из аэропорта {{choose.icaoCodeArrival}}<br>
-        Прилёт в аэропорт {{choose.icaoCodeDeparture}}<br>
+        Вылет из аэропорта {{choose.iataCodeArrival}}<br>
+        Прилёт в аэропорт {{choose.iataCodeDeparture}}<br>
         Цена билета {{choose.ticketPrice}}$<br>
         Дата вылета {{choose.departure | date:'short'}}<br>
         Время в полёте {{choose.flightTime}}<br>
