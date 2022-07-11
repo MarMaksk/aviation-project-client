@@ -14,7 +14,7 @@ export class ExaminationsComponent implements OnInit{
 
   examinations: Examination[] | any
   isDataLoaded = false
-  displayedColumns: string[] = ['date', 'description', 'iataCode'];
+  displayedColumns: string[] = ['date', 'description', 'icaoCode'];
   page: number = 0;
   size: number = 4;
   totalCount: number = 0;

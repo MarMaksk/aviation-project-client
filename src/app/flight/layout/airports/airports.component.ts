@@ -14,7 +14,7 @@ import {MatSort} from "@angular/material/sort";
 })
 export class AirportsComponent implements OnInit {
 
-  displayedColumns: string[] = ['country', 'city', 'icaoCode'];
+  displayedColumns: string[] = ['country', 'city', 'iataCode'];
   page: number = 0;
   size: number = 4;
   totalCount: number = 0;

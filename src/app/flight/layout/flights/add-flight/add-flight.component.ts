@@ -68,7 +68,7 @@ export class AddFlightComponent implements OnInit {
     this.flightService.create({
       regular: this.addForm.value.regular,
       icaoCode: this.addForm.value.icaoCode,
-      flightNumber: this.addForm.value.iataCode + this.addForm.value.icaoCodeArrival,
+      flightNumber: this.addForm.value.icaoCode + this.addForm.value.iataCodeArrival,
       departure: this.addForm.value.departure,
       flightTime: this.addForm.value.flightTime,
       passengersCount: this.addForm.value.passengersCount,
