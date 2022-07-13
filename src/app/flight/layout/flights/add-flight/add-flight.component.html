@@ -16,10 +16,8 @@
       <mat-label>Самолёт</mat-label>
       <mat-select formControlName="icaoCode">
         <mat-option>None</mat-option>
-        <p *ngIf="isDataLoadedAirplane">
           <mat-option *ngFor="let air of airplane" [value]="air.icaoCode">{{air.model}}
-            мест {{air.loadCapacity}} </mat-option>
-        </p>
+            мест {{air.loadCapacity}} + {{air.iataCode}} </mat-option>
       </mat-select>
       <mat-hint>Выбор из доступных самолётов</mat-hint>
     </mat-form-field>

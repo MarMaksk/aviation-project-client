@@ -8,7 +8,7 @@ import {HttpClient} from "@angular/common/http";
 })
 export class TagService {
 
-  API: string = 'http://localhost:9000/tag/';
+  API: string = 'http://localhost:8080/flight-catering/tag/';
 
   constructor(private http: HttpClient) {
   }

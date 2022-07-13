@@ -13,7 +13,7 @@ export class OrderService implements ICRUD<Order> {
   constructor(private http: HttpClient) {
   }
 
-  API: string = 'http://localhost:9000/order/';
+  API: string = 'http://localhost:8080/flight-catering/order/';
 
   findAllWithPagination(sort: string, direction: string, order: number, page: number): Observable<PageableEntity> {
     return this.http.get<PageableEntity>(this.API + `${sort}/${order}/${page}/${direction}`);

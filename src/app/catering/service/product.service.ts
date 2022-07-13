@@ -13,7 +13,7 @@ export class ProductService implements ICRUD<Product> {
   constructor(private http: HttpClient) {
   }
 
-  API: string = 'http://localhost:9000/product/';
+  API: string = 'http://localhost:8080/flight-catering/product/';
 
   findAll(): Observable<Product[]> {
     return this.http.get<Product[]>(this.API);

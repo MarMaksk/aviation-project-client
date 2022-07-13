@@ -10,7 +10,7 @@ export class ReportService {
   constructor(private http: HttpClient) {
   }
 
-  API: string = 'http://localhost:9000/report/';
+  API: string = 'http://localhost:8080/flight-catering/report/';
 
   deliverInvoice(productOrderId: string): Observable<any> {
     return this.http.get<any>(this.API + 'deliver/' + productOrderId,

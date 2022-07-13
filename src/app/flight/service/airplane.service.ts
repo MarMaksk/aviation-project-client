@@ -13,7 +13,7 @@ export class AirplaneService implements ICRUD<Airplane> {
   constructor(private http: HttpClient) {
   }
 
-  API: string = 'http://localhost:9001/airplane/';
+  API: string = 'http://localhost:8080/flight-order/airplane/';
 
   findAllWithPagination(sort: string, direction: string, order: number, page: number): Observable<PageableEntity> {
     return this.http.get<PageableEntity>(this.API + `${sort}/${order}/${page}/${direction}`);

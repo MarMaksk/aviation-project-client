@@ -10,7 +10,7 @@ import {PageableEntity} from "../../user/models/pageableEntity";
 })
 export class ExaminationService implements ICRUD<Examination> {
 
-  API: string = 'http://localhost:9001/examination/';
+  API: string = 'http://localhost:8080/flight-order/examination/';
 
   constructor(private http: HttpClient) {
   }

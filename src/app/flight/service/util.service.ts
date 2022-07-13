@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 
-const UTIL_API = 'http://localhost:9001/util/'
+const UTIL_API = 'http://localhost:8080/flight-order/util/'
 
 
 @Injectable({
